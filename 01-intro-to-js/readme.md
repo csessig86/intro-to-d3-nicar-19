@@ -45,7 +45,7 @@ console.log(Math.max(0, 150, 30, 20, -8, -200) )
 console.log( Math.floor(4.7) )
 ```
 
-### 3. Variables
+### 3. Numbers, strings and variables
 * Variables allow you store pieces of information to use later in your javascript file.
 ```javascript
 var number = 5 + 10; // This is a number
@@ -124,30 +124,42 @@ array_object[1]["artist"] // returns "Funkadelic"
 
 Understanding data types is very important as you work with D3. Often times, your data will look like objects inside of an array. For instance, if you're working with a CSV file, D3 will convert that file into an array with each row in the spreadsheet being it's own object inside of the array.
 
-### 7. If, else statement
-* This will run code based on a condition or conditions. Code that doesn't fit this condition or conditions will be ignored.
+### 7. If, else statements
+* This will run certain pieces of code based on a condition or conditions. Code that doesn't fit this condition or conditions will be ignored. These always end in an else statement, which is ran if none of the conditions are met.
 ```javascript
 var number = 50;
 
 if (number === 50) {
-  // This code WILL run
-  console.log(number)
+  // This code WILL run because the condition above is true
+  console.log(number);
 } else {
-  // This code WILL NOT not
+  // This code WILL NOT be run
+}
+
+if (number === 50) {
+  // This code WILL run because the condition above is true
+  console.log(number);
+} else if (number > 50) {
+  // This code WILL NOT be run
+} else {
+  // This code WILL also NOT be run
 }
 ```
 
 ### 8. Functions
-* You can also encapsulate code inside a function.
+* You can also encapsulate pieces of code inside a function. This gives you the flexibility to call a function whenever you want.
 ```javascript
 var number = 50;
 
 function addFifty() {
+  // This operation is ran because the function was called
   number + 50
 
-  console.log(number); // returns 100
+  // This will return 100
+  console.log(number);
 }
 
+// This calls the function
 addFifty();
 ```
 
@@ -195,5 +207,5 @@ for (var num = 0; num < 10; num++) {
   plusNum(num)
 }
 
-final_number // returns 95
+console.log(final_number); // returns 95
 ```
