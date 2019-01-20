@@ -24,9 +24,9 @@ Alternatively, one can type these lines in your script.js file. If you do this, 
 ### 2. Math, Dates
 * The most basic thing you can do in javascript is math.
 ```javascript
-5 + 10;  // returns 15
-10 / 5;  // returns 2
-10 * 5;  // returns 50
+5 + 10  // returns 15
+10 / 5  // returns 2
+10 * 5  // returns 50
 
 Math.round(10.7);   // returns 11
 Math.max(0, 150, 30, 20, -8, -200); // returns 150
@@ -101,7 +101,7 @@ var object_one = {
   "artist": "Prince",
   "album": "Sign o' the Times",
   "stars": 5
-}
+};
 
 object_one["artist"] // returns 'Prince'
 object_one["album"] // returns "Sign o' the Times"
@@ -160,7 +160,7 @@ function addFifty() {
 
   // This will return 100
   console.log(number);
-}
+};
 
 // This calls the function
 addFifty();
@@ -185,7 +185,7 @@ var number = 50;
 
 function plusFive(num) {
   number += 5
-}
+};
 
 for (var num = 0; num < 10; num++) {
   plusFive()
@@ -203,7 +203,7 @@ var final_number = 50;
 // To final_number
 function plusNum(num) {
   final_number += num
-}
+};
 
 for (var num = 0; num < 10; num++) {
   // Pass the value of num (0, 1, 2, 3, etc.)
