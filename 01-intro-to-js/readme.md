@@ -104,3 +104,100 @@ object_one["artist"] // returns 'Prince'
 object_one["album"] // returns "Sign o' the Times"
 object_one["stars"] // returns 5
 ```
+
+### 6. Objects inside an array
+* You can also store objects inside arrays. You can store as many as you want.
+```javascript
+var array_object = [{
+  "artist": "Prince",
+  "album": "Sign o' the Times",
+  "stars": 5
+},{
+  "artist": "Funkadelic",
+  "album": "Cosmic Slop",
+  "stars": 5
+}]
+
+array_object[0]["artist"] // returns "Prince"
+array_object[1]["artist"] // returns "Funkadelic"
+```
+
+Understanding data types is very important as you work with D3. Often times, your data will look like objects inside of an array. For instance, if you're working with a CSV file, D3 will convert that file into an array with each row in the spreadsheet being it's own object inside of the array.
+
+### 7. If, else statement
+* This will run code based on a condition or conditions. Code that doesn't fit this condition or conditions will be ignored.
+```javascript
+var number = 50;
+
+if (number === 50) {
+  // This code WILL run
+} else {
+  // This code WILL NOT not
+}
+```
+
+### 8. Functions
+* You can also encapsulate code inside a function.
+```javascript
+function ourFirst() {
+  // Code goes in here
+}
+
+ourFirst() // Calls the function
+
+var number_two = 100;
+
+function addFifty() {
+  number_two // returns 100
+  number_two + 50 // returns 150
+}
+
+addFifty();
+```
+
+### 9. For loops
+* If we want a piece a code to run many times, we can call a for loop.
+```javascript
+for (var num = 0; num < 10; num++) {
+  // The first time through num equals 0.
+  // The second time it equals 1, etc. until we get to 9.
+  // Which will be the last iteration of this for loop
+  num
+}
+```
+
+### 10. Combining it all: for loops, functions and variables
+* We can also create a for loop to call a function every time it loops through. This looks like so:
+```javascript
+var number = 50;
+
+function plusFive(num) {
+  number += 5
+}
+
+for (var num = 0; num < 10; num++) {
+  plusFive()
+}
+
+// After the for loop is done
+// number will equal 100
+// Because 5 was added to its initial value of 50 ten times
+// Because the for loop was called ten times
+number
+
+var final_number = 50;
+
+// Add the value of the for loop's num
+// To final_number
+function plusNum(num) {
+  final_number += num
+}
+
+for (var num = 0; num < 10; num++) {
+  // Pass the value of num (0, 1, 2, 3, etc.)
+  // To our function
+  plusNum(num)
+}
+
+final_number // returns 95
+```
