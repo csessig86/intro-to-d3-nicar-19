@@ -24,24 +24,27 @@ Alternatively, one can type these lines in your script.js file. If you do this, 
 ### 2. Math, Dates
 * The most basic thing you can do in javascript is math.
 ```javascript
-5 + 10  // returns 15
-10 / 5  // returns 2
-10 * 5  // returns 50
+5 + 10;  // returns 15
+10 / 5;  // returns 2
+10 * 5;  // returns 50
 
 Math.round(10.7);   // returns 11
 Math.max(0, 150, 30, 20, -8, -200); // returns 150
 Math.floor(4.7);    // returns 4
 ```
 
+### A note about semicolons
+* You will note that statements have semicolons at the end of them. While your browser will still run if you don't include them, it's best practice to include them. Here's a [great guide](https://news.codecademy.com/your-guide-to-semicolons-in-javascript/) to help you further.
+
 If you want to wrap these in console.log statements in your script.js file, it would look like so:
 
 ```javascript
-console.log(5 + 10)
-console.log(10 / 5)
-console.log(10 * 5)
+console.log(5 + 10);
+console.log(10 / 5);
+console.log(10 * 5);
 
-console.log(Math.round(10.7) )
-console.log(Math.max(0, 150, 30, 20, -8, -200) )
+console.log(Math.round(10.7) );
+console.log(Math.max(0, 150, 30, 20, -8, -200) );
 console.log( Math.floor(4.7) )
 ```
 
@@ -211,6 +214,3 @@ for (var num = 0; num < 10; num++) {
 // This returns 95
 console.log(final_number);
 ```
-
-### A note about semicolons
-* You will note that the console.log statements and variables have semicolons at the end of them. While your browser will still run if you don't include them, it's best practice to include them. Here's a [great guide](https://news.codecademy.com/your-guide-to-semicolons-in-javascript/) to help you further.
