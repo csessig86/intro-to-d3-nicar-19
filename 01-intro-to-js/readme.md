@@ -67,7 +67,7 @@ console.log(number)
 console.log(string)
 ```
 
-#### 4. Data type: Arrays
+### 4. Data type: Arrays
 * You can group numbers and strings into one variable using arrays.
 ```javascript
 var array_one = [10, 15, 20] // Arrays are groups of numbers
@@ -91,7 +91,7 @@ var array_three = ["Prince", "Sign o' the Times", 5]
 array_three[1] // returns "Sign o' the Times"
 ```
 
-#### 6. Data type: Objects
+### 5. Data type: Objects
 * You can also store data using named attributes.
 ```javascript
 var object_one = {
