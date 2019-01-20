@@ -131,6 +131,7 @@ var number = 50;
 
 if (number === 50) {
   // This code WILL run
+  console.log(number)
 } else {
   // This code WILL NOT not
 }
@@ -139,17 +140,12 @@ if (number === 50) {
 ### 8. Functions
 * You can also encapsulate code inside a function.
 ```javascript
-function ourFirst() {
-  // Code goes in here
-}
-
-ourFirst() // Calls the function
-
-var number_two = 100;
+var number = 50;
 
 function addFifty() {
-  number_two // returns 100
-  number_two + 50 // returns 150
+  number + 50
+
+  console.log(number); // returns 100
 }
 
 addFifty();
@@ -162,7 +158,7 @@ for (var num = 0; num < 10; num++) {
   // The first time through num equals 0.
   // The second time it equals 1, etc. until we get to 9.
   // Which will be the last iteration of this for loop
-  num
+  console.log(num);
 }
 ```
 
