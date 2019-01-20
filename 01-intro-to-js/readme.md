@@ -152,7 +152,7 @@ if (number === 50) {
 var number = 50;
 
 function addFifty() {
-  // This operation is ran because the function was called
+  // This operation is ran because the function was called below
   number + 50
 
   // This will return 100
@@ -164,11 +164,12 @@ addFifty();
 ```
 
 ### 9. For loops
-* If we want a piece a code to run many times, we can call a for loop.
+* If we want a piece a code to run many times, we can call a for loop. Inside a for loop, you can decide what number to start with and how many times you want it to be ran.
+* The for loop below starts with the number 0 and increases every time through. As long as the number is below the number 10, the loop will be ran. Therefore, the loop will be ran a total of 10 times, and the last number to be ran will be 9. The loop will stop at 9 because we set the criteria that numbers must be under 10 to be ran.
 ```javascript
-for (var num = 0; num <= 10; num++) {
+for (var num = 0; num < 10; num++) {
   // The first time through num equals 0.
-  // The second time it equals 1, etc. until we get to 10.
+  // The second time it equals 1, etc. until we get to 9.
   // Which will be the last iteration of this for loop
   console.log(num);
 }
@@ -191,7 +192,7 @@ for (var num = 0; num < 10; num++) {
 // number will equal 100
 // Because 5 was added to its initial value of 50 ten times
 // Because the for loop was called ten times
-number
+console.log(number);
 
 var final_number = 50;
 
@@ -207,5 +208,6 @@ for (var num = 0; num < 10; num++) {
   plusNum(num)
 }
 
-console.log(final_number); // returns 95
+// This returns 95
+console.log(final_number);
 ```
