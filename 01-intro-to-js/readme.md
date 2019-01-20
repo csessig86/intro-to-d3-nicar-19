@@ -166,9 +166,9 @@ addFifty();
 ### 9. For loops
 * If we want a piece a code to run many times, we can call a for loop.
 ```javascript
-for (var num = 0; num < 10; num++) {
+for (var num = 0; num <= 10; num++) {
   // The first time through num equals 0.
-  // The second time it equals 1, etc. until we get to 9.
+  // The second time it equals 1, etc. until we get to 10.
   // Which will be the last iteration of this for loop
   console.log(num);
 }
