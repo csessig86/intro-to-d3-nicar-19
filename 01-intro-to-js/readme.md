@@ -210,4 +210,6 @@ for (var num = 0; num < 10; num++) {
 
 // This returns 95
 console.log(final_number);
-```
+
+### A note about semicolons
+* You will note that the console.log statements and variables have semicolons at the end of them. While your browser will still run if you don't include them, it's best practice to include them. Here's a [great guide](https://news.codecademy.com/your-guide-to-semicolons-in-javascript/) to help you further.
