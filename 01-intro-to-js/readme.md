@@ -17,9 +17,9 @@ In this example, we've created an index.html page and a script.js file, which yo
 console.log(5 + 10);
 ```
 
-As you work through this exercise, go ahead and type out the lines of code in your dev tool's console panel. When you do this, you will see the code being ran in the browser's console.
+As you work through this exercise, go ahead and type out the lines of code in your dev tool's console panel. When you do this, you will see the code being ran directly in the browser's console.
 
-Alternatively, one can type these in your script.js file. If you do this, you will need to wrap them in a console.log statement to have the code shown to you in the browser's console.
+Alternatively, one can type these lines in your script.js file. If you do this, you will need to wrap them in a console.log statement to have the code shown to you in the browser's console.
 
 ### 2. Math, Dates
 * The most basic thing you can do in javascript is math.
@@ -61,7 +61,46 @@ string += ', the best programming language ever' // This will return 'All hail J
 ```
 
 Remember that console.log statements are basically notes to yourself. You don't need console log statements to create and change variables, for instance, but if you want them to show up in your browser's console, one way to do this is wrap the variable name in a console.log statement like so:
+
 ```javascript
 console.log(number)
 console.log(string)
+```
+
+#### 4. Data type: Arrays
+* You can group numbers and strings into one variable using arrays.
+```javascript
+var array_one = [10, 15, 20] // Arrays are groups of numbers
+
+// Array indexes start with zero
+// To get the first attribute in this array do the following:
+array_one[0] // returns 10
+
+array_one[1] // returns 15
+array_one[2] // returns 20
+
+var array_two = ["String one", "string two", "Guess what? This is another string"]
+
+array_two[0] // returns "String one"
+array_two[1] // returns "string two"
+array_two[2] // returns "Guess what? This is another string"
+
+// Strings and a integer in this array
+var array_three = ["Prince", "Sign o' the Times", 5]
+
+array_three[1] // returns "Sign o' the Times"
+```
+
+#### 6. Data type: Objects
+* You can also store data using named attributes.
+```javascript
+var object_one = {
+  "artist": "Prince",
+  "album": "Sign o' the Times",
+  "stars": 5
+}
+
+object_one["artist"] // returns 'Prince'
+object_one["album"] // returns "Sign o' the Times"
+object_one["stars"] // returns 5
 ```
