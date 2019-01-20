@@ -138,6 +138,11 @@ if (number === 50) {
 } else {
   // This code WILL NOT be run
 }
+```
+
+* Here's an example with an if else statement. It's not called because the number variable is not greater than 50.
+```javascript
+var number = 50;
 
 if (number === 50) {
   // This code WILL run because the condition above is true
