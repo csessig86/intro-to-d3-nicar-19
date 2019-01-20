@@ -21,7 +21,7 @@ As you work through this exercise, go ahead and type out the lines of code in yo
 
 Alternatively, one can type these in your script.js file. If you do this, you will need to wrap them in a console.log statement to have the code shown to you in the browser's console.
 
-2. Math, Dates
+### 2. Math, Dates
 * The most basic thing you can do in javascript is math.
 ```javascript
 5 + 10  // returns 15
@@ -33,7 +33,7 @@ Math.max(0, 150, 30, 20, -8, -200); // returns 150
 Math.floor(4.7);    // returns 4
 ```
 
-If you want to wrap these in console.log statements, it would look like so:
+If you want to wrap these in console.log statements in your script.js file, it would look like so:
 
 ```javascript
 console.log(5 + 10)
@@ -45,7 +45,7 @@ console.log(Math.max(0, 150, 30, 20, -8, -200) )
 console.log( Math.floor(4.7) )
 ```
 
-### 2. Variables
+### 3. Variables
 * Variables allow you store pieces of information to use later in your javascript file.
 ```javascript
 var number = 5 + 10; // This is a number
