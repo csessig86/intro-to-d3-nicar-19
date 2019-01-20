@@ -43,37 +43,37 @@ console.log(5 + 10);
 console.log(10 / 5);
 console.log(10 * 5);
 
-console.log(Math.round(10.7) );
+console.log( Math.round(10.7) );
 console.log(Math.max(0, 150, 30, 20, -8, -200) );
-console.log( Math.floor(4.7) )
+console.log( Math.floor(4.7) );
 ```
 
 ### 3. Numbers, strings and variables
 * Variables allow you store pieces of information to use later in your javascript file.
 ```javascript
 var number = 5 + 10; // This is a number
-var string = 'All hail Javascript' // This is a string
+var string = 'All hail Javascript'; // This is a string
 
 number // returns 15
 string // returns 'All hail Javascript'
 
-number += 15
+number += 15;
 number // returns 30
 
-string += ', the best programming language ever' // This will return 'All hail Javascript, the best programming language ever'
+string += ', the best programming language ever'; // This will return 'All hail Javascript, the best programming language ever'
 ```
 
 Remember that console.log statements are basically notes to yourself. You don't need console log statements to create and change variables, for instance, but if you want them to show up in your browser's console, one way to do this is wrap the variable name in a console.log statement like so:
 
 ```javascript
-console.log(number)
-console.log(string)
+console.log(number);
+console.log(string);
 ```
 
 ### 4. Data type: Arrays
 * You can group numbers and strings into one variable using arrays.
 ```javascript
-var array_one = [10, 15, 20] // Arrays are groups of numbers
+var array_one = [10, 15, 20]; // Arrays are groups of numbers
 
 // Array indexes start with zero
 // To get the first attribute in this array do the following:
@@ -82,14 +82,14 @@ array_one[0] // returns 10
 array_one[1] // returns 15
 array_one[2] // returns 20
 
-var array_two = ["String one", "string two", "Guess what? This is another string"]
+var array_two = ["String one", "string two", "Guess what? This is another string"];
 
 array_two[0] // returns "String one"
 array_two[1] // returns "string two"
 array_two[2] // returns "Guess what? This is another string"
 
 // Strings and a integer in this array
-var array_three = ["Prince", "Sign o' the Times", 5]
+var array_three = ["Prince", "Sign o' the Times", 5];
 
 array_three[1] // returns "Sign o' the Times"
 ```
@@ -119,7 +119,7 @@ var array_object = [{
   "artist": "Funkadelic",
   "album": "Cosmic Slop",
   "stars": 5
-}]
+}];
 
 array_object[0]["artist"] // returns "Prince"
 array_object[1]["artist"] // returns "Funkadelic"
