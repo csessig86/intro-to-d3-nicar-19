@@ -7,12 +7,23 @@ Javascript is typically stored in .js files. It can also be written in html page
 
 In this example, we've created an index.html page and a blank script.js file, which you can use to write your javascript code. You will need to open up the index.html file in a browser, as well as that browser's developer tools. Here's more information on the dev tools for [Chrome](https://developer.chrome.com/devtools) and [Firefox](https://developer.mozilla.org/en-US/docs/Tools).
 
-### 1. Math, Dates
-* The most basic thing you can do in Javascript is math.
+### 1. Comments, console.log
+* Comments allow you to write notes for your future self so you know what certain pieces of code are supposed to do. The script.js file already includes a comment.
+* Console.log statements are great for debugging code. Whatever is inside of the console.log statement will be shown in your browser's web tools.
 ```javascript
-5 + 10  // returns 15
-10 / 5  // returns 2
-10 * 5  // returns 50
+// Example of a comment
+5 + 10
+
+// Example of a console.log
+console.log(5 + 10);
+```
+
+2. Math, Dates
+* The most basic thing you can do in javascript is math.
+```javascript
+console.log(5 + 10)  // returns 15
+console.log(10 / 5)  // returns 2
+console.log(10 * 5)  // returns 50
 
 Math.round(10.7);   // returns 11
 Math.max(0, 150, 30, 20, -8, -200); // returns 150
@@ -20,7 +31,16 @@ Math.floor(4.7);    // returns 4
 ```
 
 ### 2. Variables
-* Variables allow you store pieces of information to use later in your Javascript file.
+* Variables allow you store pieces of information to use later in your javascript file.
 ```javascript
 var number = 5 + 10; // This is a number
 var string = 'All hail Javascript' // This is a string
+
+number // returns 15
+string // returns 'All hail Javascript'
+
+number += 15
+number // returns 30
+
+string += ', the best programming language ever' // This will return 'All hail Javascript, the best programming language ever'
+```
