@@ -183,7 +183,7 @@ for (var num = 0; num < 10; num++) {
 }
 ```
 
-### 10. Combining it all: for loops, functions and variables
+### 10. Combining it all: variables, functions and for loops
 * We can also create a for loop to call a function every time it loops through. This looks like so:
 ```javascript
 var number = 50;
@@ -212,7 +212,7 @@ With D3, you can use data to create and manipulate HTML elements. For instance, 
 
 Here's an example: Let's say you're working with weather data and you have a spreadsheet that includes the temperature for a particular city for every day in a year. Each row represents a day in the year, meaning you have 365 rows altogether. With D3, you could create 365 DIVs -- one for each day in the year -- and their length could be determined by the temperature on that day. The hotter the temperature, the longer the bar. The end result would be a bar chart where the hottest days in the year have the longest bars.
 
-Most commonly, D3 is used to work with SVGs instead of DIVs. Scalable vector graphics (SVG) is a markup language used to render graphics and have a lot more flexibility when it comes to building charts. You can build SVGs within HTML pages, including in our index.html file. We will discuss SVGs in the second part of this course.
+Most commonly, D3 is used to work with SVGs instead of DIVs. Scalable vector graphics (SVG) is a markup language used to render graphics, and they have a lot more flexibility when it comes to building charts. Like DIVs, you can include SVGs within the body tag inside your index.html file. We will discuss SVGs in the second part of this course.
 
 ### 1. Examples using D3
 
