@@ -202,3 +202,22 @@ for (var num = 0; num < 10; num++) {
 // And each time 5 was added to its initial value of 50
 console.log(number);
 ```
+
+### Intro to D3
+After you have the basics of javascript down, you can start using javascript libraries, which are written and maintained by other javascript developers. Libraries are separate .js files that you will need to link to in your index.html file. You can do this by downloading the file or linking to the location of the file on the internet. Often, libraries are created to make it easier to do things in javascript that would otherwise be complicated and/or tedious to do without them. There are [many, many libraries](https://en.wikipedia.org/wiki/List_of_JavaScript_libraries) available to you that serve a ton of different purposes.
+
+D3 is a javascript library that is designed to work with data, whether it be objects like those shown in the example above or CSV files. One common use of D3 is to create charts using data.
+
+With D3, you can use data to create and manipulate HTML elements. For instance, if you're working with a spreadsheet, you could create a DIV for each row in your spreadsheet. You could then change how that DIV looks based on the data in that row. This is, generally speaking, how many charts are made.
+
+Here's an example: Let's say you're working with weather data and you have a spreadsheet that includes the temperature for a particular city for every day in a year. Each row represents a day in the year, meaning you have 365 rows altogether. With D3, you could create 365 DIVs -- one for each day in the year -- and their length could be determined by the temperature on that day. The hotter the temperature, the longer the bar. The end result would be a bar chart where the hottest days in the year have the longest bars.
+
+Most commonly, D3 is used to work with SVGs instead of DIVs. Scalable vector graphics (SVG) is a markup language used to render graphics and have a lot more flexibility when it comes to building charts. You can build SVGs within HTML pages, including in our index.html file. We will discuss SVGs in the second part of this course.
+
+### 1. Examples using D3
+
+* [Number of unaccompanied migrant children held in Texas](https://apps.texastribune.org/features/2018/texas-migrant-children-shelters/)
+*
+*
+
+
