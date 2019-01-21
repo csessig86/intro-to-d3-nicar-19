@@ -33,9 +33,6 @@ Math.max(0, 150, 30, 20, -8, -200); // returns 150
 Math.floor(4.7);    // returns 4
 ```
 
-### A note about semicolons
-* You will note that statements have semicolons at the end of them. While your browser will still run if you don't include them, it's best practice to include them. Here's a [great guide](https://news.codecademy.com/your-guide-to-semicolons-in-javascript/) to help you further.
-
 If you want to wrap these in console.log statements in your script.js file, it would look like so:
 
 ```javascript
@@ -47,6 +44,9 @@ console.log( Math.round(10.7) );
 console.log(Math.max(0, 150, 30, 20, -8, -200) );
 console.log( Math.floor(4.7) );
 ```
+
+### A note about semicolons
+* You will note that statements have semicolons at the end of them. While your browser will still run if you don't include them, it's best practice to include them. Here's a [great guide](https://news.codecademy.com/your-guide-to-semicolons-in-javascript/) to help you further.
 
 ### 3. Numbers, strings and variables
 * Variables allow you store pieces of information to use later in your javascript file.
