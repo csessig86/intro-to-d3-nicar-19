@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>The rise of renewable energy in Iowa</title>
+        <script type="text/javascript" src="../../d3.v5.min.js"></script>
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+
+            var data;
+            data = d3.csv('../iowa-electricity.csv').then(
+                function(readdata) { return readdata; }
+            );
+            console.log(data)
+
+        </script>
+    </body>
+</html>

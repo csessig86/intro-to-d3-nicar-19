@@ -19,6 +19,8 @@
             
             var w = 125;
             var h = 120;
+            var barwidth = 20;
+            var barpadding = 1;
 
             var svg = d3.select('body')
                 .append('svg')
@@ -29,14 +31,12 @@
                 .data(dataset)
                 .enter()
                 .append('rect')
-                .attr('x', function(d, i) { return i * 21; })
-                .attr('y', function(d) { return h - d })
+                .attr('x', function(d, i) { return i * (barwidth + barpadding); })
+                .attr('y', function (d) { return h - (d * 5) })
                 .attr('width', 20)
                 .attr('height', function(d) { return d * 5 })
                 .attr('fill', 'teal');
 
-
-            
         </script>
     </body>
 </html>
