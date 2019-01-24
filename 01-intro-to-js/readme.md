@@ -210,7 +210,7 @@ D3 is a javascript library that is designed to work with data, whether it be obj
 
 With D3, you can use data to create and manipulate HTML elements. For instance, if you're working with a spreadsheet, you could create a DIV for each row in your spreadsheet. You could then change how that DIV looks based on the data in that row. This is, generally speaking, how many charts are made.
 
-Here's an example: Let's say you're working with weather data and you have a spreadsheet that includes the temperature for a particular city for every day in a year. Each row represents a day in the year, meaning you have 365 rows altogether. With D3, you could create 365 DIVs -- one for each day in the year -- and their length could be determined by the temperature on that day. The hotter the temperature, the longer the bar. The end result would be a bar chart where the hottest days in the year have the longest bars.
+In this directory is a file named iowa-electricity-renewables.csv, which shows how much of the energy consumed by Iowa residents was from renewable sources. It's broken down by year and as you can see, the use of renewable sources has gone up from 2001 to 2017. With D3, we could create a bar for every year in this spreadsheet, and the length of the bar would represent how much renewable energy was used in that year. We will do exactly this in part two and three of the course.
 
 Most commonly, D3 is used to work with SVGs instead of DIVs. Scalable vector graphics (SVG) is a markup language used to render graphics, and they have a lot more flexibility when it comes to building charts. Like DIVs, you can include SVGs within the body tag inside your index.html file. We will discuss SVGs in the second part of this course.
 
