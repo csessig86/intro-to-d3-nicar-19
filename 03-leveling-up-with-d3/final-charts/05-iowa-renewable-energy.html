@@ -13,7 +13,6 @@
                     function (row) {
                         return {
                             year: row.year.substring(0,4),
-                            source: row.source,
                             megawatts: +row.net_generation,
                         }
                     }
@@ -36,7 +35,6 @@
                         .attr('transform', 'translate(' + chartMargin.left + ',' + chartMargin.top + ')');
 
                 var data = transformData(rawData);
-                var renewableData = data.filter(function(d) { return d.source == 'Renewables'});
 
                 var xScale = d3.scaleBand()
                     .domain(data.map(function(d) { return d.year }))
@@ -44,15 +42,13 @@
                     .padding(0.1);
 
                 var yScale = d3.scaleLinear()
-                    .domain([0, d3.max(renewableData, function(d) { return d.megawatts })]).nice()
+                    .domain([0, d3.max(data, function(d) { return d.megawatts })]).nice()
                     .range([chartHeight - chartMargin.bottom, chartMargin.top]);
-                console.log(renewableData)
-
 
                 var bars = canvas.append('g')
                         .attr('id', 'bars')
                     .selectAll("rect")
-                    .data(renewableData)
+                    .data(data)
                     .enter()
                     .append("rect")
                         .style("fill", "teal")
@@ -64,7 +60,7 @@
                         .attr("data-megawatts", function(d) { return d.megawatts })
             }
 
-            d3.csv('../iowa-electricity.csv').then(makeChart);
+            d3.csv('iowa-renewable-energy.csv').then(makeChart);
 
         </script>
     </body>
