@@ -217,7 +217,8 @@ Most commonly, D3 is used to work with SVGs instead of DIVs. Scalable vector gra
 ### 1. Examples using D3
 
 * [Number of unaccompanied migrant children held in Texas](https://apps.texastribune.org/features/2018/texas-migrant-children-shelters/)
-*
-*
+* [How to know if you’re spending too much on housing in Texas](https://apps.texastribune.org/features/2018/housing-costs-texas-are-you-spending-too-much/)
+* [Terror’s daily reality](https://www.latimes.com/projects/la-fg-worldwide-terror-graphic/)
+* [Meet the team: LeBron and the Lakers](https://www.latimes.com/projects/la-sp-lakers-roster/?lebron-james)
 
 
