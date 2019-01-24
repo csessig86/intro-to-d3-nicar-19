@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>Drawing bars with D3 according to data</title>
-        <script type="text/javascript" src="../../d3.v5.min.js"></script>
+        <script type="text/javascript" src="d3v5.js"></script>
         <style type="text/css">
         
             div.bar {
@@ -22,11 +22,11 @@
                 .data(dataset)
                 .enter()
                 .append("div")
-                .attr("class", "bar")
-                .style("height", function(d) {
-                    var barHeight = d * 5;
-                    return barHeight + "px";
-                });
+                    .attr("class", "bar")
+                    .style("height", function(d) {
+                        var barHeight = d * 5;
+                        return barHeight + "px";
+                    });
             
         </script>
     </body>
