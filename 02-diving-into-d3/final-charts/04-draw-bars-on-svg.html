@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Drawing bars with D3 according to data on an SVG</title>
+        <script type="text/javascript" src="d3v5.js"></script>
+        <style type="text/css">
+        
+            div.bar {
+                display: inline-block;
+                width: 20px;
+                background-color: teal;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            
+            var dataset = [ 5, 10, 15, 20, 25 ];
+            
+            var w = 125;
+            var h = 120;
+            var barwidth = 20;
+            var barpadding = 1;
+
+            var svg = d3.select('body')
+                .append('svg')
+                    .attr('width', w)
+                    .attr('height', h);
+
+            svg.selectAll('rect')
+                .data(dataset)
+                .enter()
+                .append('rect')
+                    .attr('x', function(d, i) { return i * (barwidth + barpadding); })
+                    .attr('y', function (d) { return h - (d * 5) })
+                    .attr('width', 20)
+                    .attr('height', function(d) { return d * 5 })
+                    .attr('fill', 'teal');
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Drawing bars with D3 according to data</title>
+        <script type="text/javascript" src="d3v5.js"></script>
+        <style type="text/css">
+        
+            div.bar {
+                display: inline-block;
+                width: 20px;
+                margin-right: 2px;
+                background-color: teal;
+            }
+        
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+        
+            var dataset = [ 5, 10, 15, 20, 25 ];
+            
+            d3.select("body").selectAll("div")
+                .data(dataset)
+                .enter()
+                .append("div")
+                    .attr("class", "bar")
+                    .style("height", function(d) {
+                        var barHeight = d * 5;
+                        return barHeight + "px";
+                    });
+            
+        </script>
+    </body>
+</html>
