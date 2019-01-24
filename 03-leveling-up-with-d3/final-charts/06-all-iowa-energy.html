@@ -58,7 +58,7 @@
 
                 var colorScale = d3.scaleOrdinal()
                     .domain(['Nuclear Energy','Fossil Fuels', 'Renewables'])
-                    .range(['rgb(66, 136, 181)','coral', 'teal'])
+                    .range(['rgb(66, 136, 181)','#fec44f', 'teal'])
 
                 var megawattScale = d3.scaleLinear()
                     .domain([0, d3.max(maxByYear, function(d) { return d.value })]).nice()
@@ -79,8 +79,6 @@
                                 .attr("width", sourceScale.bandwidth())
                                 .attr("height", function(d) { return chartHeight - megawattScale(d.megawatts); })
                                 .attr("fill", function(d) { return colorScale(d.source); });
-                
-                console.log(yearScale.domain())
             }
 
             d3.csv('../iowa-electricity.csv').then(makeChart);
