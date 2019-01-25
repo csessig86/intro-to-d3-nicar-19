@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title>The rise of renewable energy in Iowa</title>
+        <script type="text/javascript" src="d3v5.js"></script>
+        <style type="text/css">
+            #chartholder {
+                max-width: 800px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='chartholder'>
+            <!-- d3 will put the chart here -->
+        </div>
+
+        <script type="text/javascript">
+
+            function transformData(data) {
+                return data.map(
+                    function (row) {
+                        return {
+                            year: row.year.substring(0,4),
+                            megawatts: +row.net_generation,
+                        }
+                    }
+                )
+            }
+
+            function makeChart() {
+                d3.select('svg#container').remove();
+
+                var windowWidth = window.innerWidth;
+                var isMobile = windowWidth <= 767 ? true : false;
+                
+                var chartMargin = {top: 10, right: 10, bottom: 10, left: 20};
+
+                var chartWidth = document.getElementById("chartholder").clientWidth - chartMargin.left - chartMargin.right;
+                var chartHeight = isMobile ? 400 : 200;
+
+                var container = d3.select('#chartholder')
+                    .append('svg')
+                        .attr('id', 'container')
+                        .attr('width', chartWidth + chartMargin.left + chartMargin.right)
+                        .attr('height', chartHeight + chartMargin.top + chartMargin.bottom);
+
+                var canvas = container.append('g')
+                        .attr('id', 'canvas')
+                        .attr('transform', 'translate(' + chartMargin.left + ',' + chartMargin.top + ')');
+
+                var xScale = d3.scaleBand()
+                    .domain(data.map(function(d) { return d.year }))
+                    .range([chartMargin.left, chartWidth - chartMargin.right])
+                    .padding(0.1);
+
+                var yScale = d3.scaleLinear()
+                    .domain([0, d3.max(data, function(d) { return d.megawatts })]).nice()
+                    .range([chartHeight - chartMargin.bottom, chartMargin.top]);
+
+                var bars = canvas.append('g')
+                        .attr('id', 'bars')
+                    .selectAll("rect")
+                    .data(data)
+                    .enter()
+                    .append("rect")
+                        .style("fill", "teal")
+                        .attr("x", function(d) { return xScale(d.year); })
+                        .attr("y", function(d) { return yScale(d.megawatts); })
+                        .attr("height", function(d) { return (chartHeight - chartMargin.bottom) - yScale(d.megawatts); })
+                        .attr("width", xScale.bandwidth())
+                        .attr("data-year", function(d) { return d.year })
+                        .attr("data-megawatts", function(d) { return d.megawatts })
+
+                function xAxis(g) { 
+                    return g.attr("transform", 'translate(0,' + (chartHeight - chartMargin.bottom) + ')')
+                        .call(d3.axisBottom(xScale).tickSizeOuter(0))
+                }
+
+                function yAxis(g) { 
+                    return g.attr("transform", 'translate(' + chartMargin.left + ',0)')
+                        .call(d3.axisLeft(yScale))
+                }
+
+                canvas.append('g').call(xAxis);
+                canvas.append('g').call(yAxis);
+
+            }
+
+            var data;
+
+            d3.csv('iowa-renewable-energy.csv').then(
+                function(d) {
+                    data = transformData(d);
+                    makeChart();
+                    window.addEventListener('resize', makeChart);
+                }
+            );
+            
+        </script>
+    </body>
+</html>

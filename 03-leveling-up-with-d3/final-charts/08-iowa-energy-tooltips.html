@@ -32,10 +32,10 @@
                 var windowWidth = window.innerWidth;
                 var isMobile = windowWidth <= 767 ? true : false;
                 
-                var chartWidth = document.getElementById("chartholder").clientWidth;
+                var chartMargin = {top: 10, right: 10, bottom: 10, left: 20};
+
+                var chartWidth = document.getElementById("chartholder").clientWidth - chartMargin.left - chartMargin.right;
                 var chartHeight = isMobile ? 400 : 200;
-                
-                var chartMargin = {top: 10, right: 20, bottom: 10, left: 20};
 
                 var container = d3.select('#chartholder')
                     .append('svg')
@@ -60,15 +60,14 @@
                         .attr('id', 'bars')
                     .selectAll("rect")
                     .data(data)
-                    .enter()
-                    .append("rect")
+                    .enter().append("rect")
                         .style("fill", "teal")
                         .attr("x", function(d) { return xScale(d.year); })
                         .attr("y", function(d) { return yScale(d.megawatts); })
                         .attr("height", function(d) { return (chartHeight - chartMargin.bottom) - yScale(d.megawatts); })
                         .attr("width", xScale.bandwidth())
                         .attr("data-year", function(d) { return d.year })
-                        .attr("data-megawatts", function(d) { return d.megawatts })
+                        .attr("data-megawatts", function(d) { return d.megawatts });
 
                 function xAxis(g) { 
                     return g.attr("transform", 'translate(0,' + (chartHeight - chartMargin.bottom) + ')')
@@ -83,6 +82,33 @@
                 canvas.append('g').call(xAxis);
                 canvas.append('g').call(yAxis);
 
+                var tooltip = d3.select("body").append("div")
+                    .style("position", "absolute")
+                    .style("z-index", "10")
+                    .style("visibility", "hidden")
+                    .style("color", "white")
+                    .style("padding", "8px")
+                    .style("background-color", "rgba(0, 0, 0, 0.75)")
+                    .style("border-radius", "6px")
+                    .style("font", "12px sans-serif")
+                    .text("tooltip");
+
+                function commafy(num) {
+                    num.toString().replace( /\B(?=(?:\d{3})+)$/g, "," );
+                }
+
+                if (!isMobile) {
+                    bars.on("mouseover", function(d) {
+                        tooltip.html('Year: ' + d.year + '<br />' + d.megawatts + ' MW');
+                        tooltip.style("visibility", "visible");
+                    })
+                    .on("mousemove", function() {
+                        return tooltip.style("top", (d3.event.pageY - 10)+"px").style("left",(d3.event.pageX + 10)+"px");
+                    })
+                    .on("mouseout", function() {
+                        return tooltip.style("visibility", "hidden");
+                    });
+                }
             }
 
             var data;
@@ -94,6 +120,7 @@
                     window.addEventListener('resize', makeChart);
                 }
             );
+            
         </script>
     </body>
 </html>
