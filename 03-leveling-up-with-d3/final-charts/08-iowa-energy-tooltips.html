@@ -93,13 +93,13 @@
                     .style("font", "12px sans-serif")
                     .text("tooltip");
 
-                function commafy(num) {
-                    num.toString().replace( /\B(?=(?:\d{3})+)$/g, "," );
+                function numberWithCommas(x) {
+                    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 }
 
                 if (!isMobile) {
                     bars.on("mouseover", function(d) {
-                        tooltip.html('Year: ' + d.year + '<br />' + d.megawatts + ' MW');
+                        tooltip.html('Year: ' + d.year + '<br />' + numberWithCommas(d.megawatts) + ' megawatts');
                         tooltip.style("visibility", "visible");
                     })
                     .on("mousemove", function() {
