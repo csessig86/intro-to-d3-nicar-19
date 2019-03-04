@@ -8,11 +8,11 @@ You may have produced a chart in the past, using a tool such as Excel, python or
 
 Today, we're going to focus on a simple bar chart. We'll build one bar, then a few more, then add some dressing to create a production-level graphic.
 
-To understand the process of D3, it helps to take a step back from javascript. We'll start by relying solely on **HTML** and **CSS** to craft a bar.
+To understand the process of D3, it helps to take a step back from javascript. We'll start by relying solely on **HTML** and **CSS** to produce a bar.
 
 ## Drawing a bar
 
-Let's start our sketch. Navigate to the folder `02-diving-into-d3` (the same folder where this readme.md file is located) and create a new text file. Start by saving it with a name you can remember later, such as `chart1.html`.
+Let's start a sketch. Navigate to the folder `02-diving-into-d3` (the same folder where this readme.md file is located) and create a new text file. Start by saving it with a name such as `chart1.html`.
 
 Copy and paste this basic HTML outline into the page:
 
@@ -20,11 +20,11 @@ Copy and paste this basic HTML outline into the page:
 <html>
     <head>
         <style type="text/css">
-        <!-- style goes here -->
+            <!-- CSS styles go here -->
         </style>
     </head>
     <body>
-        <!-- html elements go here -->
+        <!-- HTML elements go here -->
         <script type="text/javascript">
             <!-- javascript goes here -->
         </script>
@@ -32,3 +32,12 @@ Copy and paste this basic HTML outline into the page:
 </html>
 ```
 
+A bar is just a rectangle, and the easiest way to draw a rectangle is with a `div` tag. Divs are a flexible HTML element. They can be used as containers to group sections of code, or can be be elements on their own. You can put one on the page by typing `<div></div>` in the body of the code. Save the text file, then open the page in your browser. It should be an empty page.
+
+Let's tell the browser we want to make this div look like a rectangle. This is possible by adding styles to the element, such as a narrow width and a tall height. By default the bar will appear white, which means we won't see it on the white background. Let's add a color by modifying the div's background color property. HTML supports [more than 150 colors by named reference](https://htmlcolorcodes.com/color-names/). Pick your favorite. We are going to use teal.
+
+Style declarations can go right on the initialization of the div. Here's what you should end up with:
+
+```html
+<div style="width: 20px; height: 75px; background-color:teal"></div>
+```
