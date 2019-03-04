@@ -36,7 +36,11 @@ A bar is just a rectangle, and the easiest way to draw a rectangle is with a `di
 
 Let's tell the browser we want to make this div look like a rectangle. This is possible by adding styles to the element, such as a narrow width and a tall height. By default the bar will appear white, which means we won't see it on the white background. Let's add a color by modifying the div's background color property. HTML supports [more than 150 colors by named reference](https://htmlcolorcodes.com/color-names/). Pick your favorite. We are going to use teal.
 
-Style declarations can go right on the initialization of the div. Here's what you should end up with: `<div style="width:20px; height:75px; background-color:teal"></div>`
+Style declarations can go right on the initialization of the div. Here's what you should end up with:
+
+```html
+<div style="width:20px; height:75px; background-color:teal"></div>
+```
 
 Save the text file and refresh the browser (get used to doing this a lot). Boom. You have a solitary colored bar.
 
@@ -48,7 +52,7 @@ That's where Cascading Style Sheets, or CSS, comes in. CSS allows you to separat
 
 Here's what we'll do to separate the style from the HTML in this example. Start by giving the div a name, or what HTML calls a **class**. We've gone with "bar" for the class. All you need to do is put `class="bar"` alongside the style declaration.
 
-Now let's move the styling code into the `<style>` tag at the top of the file. We first have to refer to what we're styling. In this case, `div.bar` refers to the div with the class bar. Classes are referred to using a period (`.bar` in this case). HTML tags like `div` stand alone.
+Now let's move the styling code into the `<style>` tag at the top of the file. We first have to refer to what we're styling. In this case, `div.bar` refers to the div with the class bar. Classes are referred to using a period (`.bar` in this case). HTML tags like `<div>` stand alone.
 
 Then, add a couple of curly brackets (`{}`) with space in between after the declaration, and move the styles we wrote on the div into there. You should end up with this:
 
@@ -60,11 +64,11 @@ div.bar {
 }
 ```
 
-Now strip off the styles from the div, leaving only `<div class="bar"></div>`. Refresh the page, and you should see the same bar as before. Same bar, two different ways to get there.
+Now strip off the styles from the div, leaving only `<div class="bar"></div>`. Refresh the page. It should look identical to what we had before. Same bar, two different ways to get there.
 
 ## Drawing a bar with D3
 
-Let's now see how D3 does the same thing.
+Now we'll introduce another way to get the same bar by using D3.
 
 Make a new file, something like `chart2.html`, and paste the template from above into it.
 
@@ -78,12 +82,15 @@ The full functionality of the D3 library is now available to us.
 
 ### Appending elements
 
-D3 works by by injecting HTML code into the browser. To do this, you use D3 to point to an element, then specify what you want to **append** inside the element.
+D3 works by by injecting HTML code into the browser. To do this, you use D3 to point to an element, then specify what you want to **append** inside the element. It operates very literally.
 
-Let's use it to add a div to the 
+We need to get a `div` with the class `bar` into the `<body>` tag. Here's how D3 does that:
 
+```javascript
+d3.select("body").append('div').attr('class','bar')
+```
 
-
+Plug that line of code into the space for javascript in the template, then open the browser to the HTML file. A blank page should appear.
 
 
 
