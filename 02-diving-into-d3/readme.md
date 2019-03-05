@@ -54,7 +54,7 @@ Here's what we'll do to separate the style from the HTML in this example. Start 
 
 Now let's move the styling code into the `<style>` tag at the top of the file. We first have to refer to what we're styling. In this case, `div.bar` refers to the div with the class bar. Classes are referred to using a period (`.bar` in this case). HTML tags like `<div>` stand alone.
 
-Then, add a couple of curly brackets (`{}`) with space in between after the declaration, and move the styles we wrote on the div into there. You should end up with this:
+Then, add a couple of curly brackets with space in between after the declaration, and move the styles we wrote on the div into there. You should end up with this:
 
 ```css
 div.bar {
@@ -90,13 +90,12 @@ We need to get a `div` with the class `bar` into the `<body>` tag. Here's how D3
 d3.select("body").append('div').attr('class','bar')
 ```
 
-Plug that line of code into the space for javascript in the template, then open the browser to the HTML file. A blank page should appear.
+The code is pretty straightforward: Grab onto the `<body>` tag of the append, add a `<div>` tag inside it and add the attribute `class="bar" to the div. Plug that line of code into the space for javascript in the template, then open the browser to the HTML file. A blank page should appear. But if you crack open the inspector, you will see that 
 
 
 
 
-
-
+![Inspector]('mdfiles/inspector.png')
 
 
 
