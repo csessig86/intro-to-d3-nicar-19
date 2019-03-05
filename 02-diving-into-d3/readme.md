@@ -8,7 +8,7 @@ You may have produced a chart in the past, using a tool such as Excel, python or
 
 Today, we're going to focus on bar charts. We'll build one bar, then a few more, then add some dressing to create a production-level graphic. We are going to create these files from scratch. For reference, the `final-charts/` folder contains the end result of every part of this tutorial.
 
-To understand the process of D3, it helps to take a step back from javascript. We'll start by relying solely on **HTML** and **CSS** to produce a bar.
+To understand the process of D3, it helps to take a step back from javascript. We'll start by relying solely on HTML and CSS to produce a bar.
 
 ## Drawing a bar
 
@@ -56,7 +56,7 @@ Now let's move the styling code into the `<style>` tag at the top of the file. W
 
 Then, add a couple of curly brackets (`{}`) with space in between after the declaration, and move the styles we wrote on the div into there. You should end up with this:
 
-```style
+```css
 div.bar {
     width: 20px;
     height: 75px;
