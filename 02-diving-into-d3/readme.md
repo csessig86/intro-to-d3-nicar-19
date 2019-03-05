@@ -102,9 +102,9 @@ But the bar doesn't have any style. So copy and paste the style declaration from
 
 ## Drawing bars based on data
 
-Our first example created a single bar. Now we'll use create multiple bars using some data.
+Our first example created a single bar. Now we'll create multiple bars using some data.
 
-Create a new file -- `chart3.html` -- with the same shell as before. Start by throwing the D3 into the head (`<script src="d3v5.js"></script>`) then go ahead and reuse the CSS from the previous example.
+Create a new file -- `chart3.html` -- with the same shell as before. Start by throwing the D3 into the head (`<script src="d3v5.js"></script>`) then go ahead and copy and paste the CSS from the previous example.
 
 We'll start by creating an array in the script tag at the bottom. You can create any kind of array you want, with any numbers. We're going to use this:
 
@@ -112,9 +112,9 @@ We'll start by creating an array in the script tag at the bottom. You can create
 var dataset = [ 5, 10, 15, 20, 25 ];
 ```
 
-Our goal is to create a bar chart, with heights corresponding to numbers in the array. Previously, we used CSS to define the height of a single bar. It follows that you could copy and paste that code repeatedly to create bars of different heights. D3 saves us a lot of time and typing.
+Our goal is to create a bar chart, with heights corresponding to numbers in the array. Previously, we used CSS to define the height of a single bar. It follows that you could repeatedly type that to create bars of different heights. D3 will do that succinctly.
 
-The code it takes to do it may not makes sense at first. Plug this into your script tag before we break it down line by line.
+The code required may not make sense at first. Plug this into the bottom script tag before we break it down line by line.
 
 ```javascript
 d3.select("body")
@@ -125,23 +125,47 @@ d3.select("body")
             .attr("class", "bar")
 ```
 
-`d3.select("body")`: Just as before, we need to make a selection that identifies where we're going to place the elements we are about to create.
+Here's what's going on:
 
-`.selectAll("div")`: This is selecting all div items that are within the body tag. You might think "There are no divs within the body" and you would be right. However, selecting items that are about to be created is a convention D3.
+`d3.select("body")` Just as before, we need to make a selection that identifies where we're going to place the elements we are about to create.
 
-`.data(dataset)`: We are now making our small data set available to D3.
+`.selectAll("div")` This is selecting all div items that are within the body tag. You might think "There are no divs within the body" and you would be right. However, selecting items that are about to be created is a convention D3.
 
-`.enter()`: Perhaps the most crucial step in this process. By using enter, we have now gained the ability to add items repeatedly the page. Anything we ask D3 to do after this will be repeated N times, where N is the number of items in the array (in our case, five times). It also preserves the *values* of the array for use later. This is what is D3 officially refers to as *binding* data to the DOM.
+`.data(dataset)` We are now making our small data set available to D3.
 
-`.append("div")`: Here's where we append a div just as before. But now, this append step is going to be run five times. Run the inspector to see five divs now sitting in the page.
+`.enter()` Perhaps the most crucial step in this process. By using enter, we have now gained the ability to add items repeatedly the page. Anything we ask D3 to do after this will be repeated N times, where N is the number of items in the array (in our case, five times). It also preserves the *values* of the array for use later. This is what is D3 officially refers to as *binding* data to the DOM.
 
-`.attr("class", "bar")`: Just as before, we need to add the `bar` class to the div so the styles written in the CSS can take effect. Except now, this is running on each of the five divs. This also raises a peculiarity of D3 that is worth remembering: Any maniuplation only takes effect on the *last* thing that has been selected or appended. Just like the `selectAll` only worked on the body, and the `append` worked on the just-created div, this class assignment will work on the newest divs.
+`.append("div")` Here's where we append a div just as before. But now, this append step is going to be run five times.
 
+`.attr("class", "bar")` Just as before, we need to add the `bar` class to the div so the styles written in the CSS can take effect. Except now, this is running on each of the five divs. This also raises a peculiarity of D3 that is worth remembering: Any maniuplation only takes effect on the *last* thing that has been selected or appended. Just like the `selectAll` only worked on the body, and the `append` worked on the just-created div, this class assignment will work on the newest divs.
 
+What you should see in the browser is a much longer bar than the single bar from before. There are five divs (run the inspector and you'll see them), but HTML defaults to stacking divs on top of each other. Each div was given a height of 75 pixels by the CSS, so this is a bar that is 375 pixels (5*75) long.
 
+![Bars laid out vertically](mdfiles/vertical-stack.png)
 
+More accurately, a div has a default CSS property called `display`, which defaults to the setting `block`. We can override it in CSS to get the bars lined up horizontally. In the `div.bar` declaration, add `display:inline-block` and refresh the page.
 
+![Bars laid out horizontally](mdfiles/horizontal-bars.png)
 
+Getting closer. Now the bars are bunched together. Some space between them would be nice. This is easy: tack on `margin-right:2px` to the CSS to give the bars some breathing room.
+
+What about heights based on the data values? That requires setting the CSS height setting on each individual bar, instead of one constant definition. Just `.attr()`, D3 has a `.style()` function that allows for setting CSS. If we set it to `.style("height", "75px")`, it would be identical to what we have now. For a dynamically set height, we need to access the values, which requires using a function. Tack this on below the last line of the D3 code we just wrote.
+
+```javascript
+.style("height", function(d) { return d + "px"})
+```
+
+The function is declared in the same line as the style function, making it what javascript calls *anonymous*. (It could have been a named function declared outside of the D3 code as well.) The argument, `d` (it can take any name but shorter is better), becomes the individual values inside the function. Remember, this is called five different times. Each time through, `d` will update with the new number. That number is then pasted to create a string like '5px'.
+
+Refresh the page and open the console:
+
+![Small bars](mdfiles/small-bars-console.png)
+
+A bar chart! A little cramped, but a bar chart nonetheless. The console also shows us that the styles on each bar are set *inline*, like we did in our very first example. This overrides the height setting in the CSS, which can be removed.
+
+Finally, we'll stretch the chart vertically with a little algebra inside the function. Replace `d + "px"` with `(d*5) + "px"` to see what happens.
+
+![Stretched](mdfiles/stretched-bars.png)
 
 
 
