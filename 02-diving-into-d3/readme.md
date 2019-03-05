@@ -135,7 +135,7 @@ d3.select("body")
 
 `.append("div")`: Here's where we append a div just as before. But now, this append step is going to be run five times. Run the inspector to see five divs now sitting in the page.
 
-`.attr("class", "bar")`: 
+`.attr("class", "bar")`: Just as before, we need to add the `bar` class to the div so the styles written in the CSS can take effect. Except now, this is running on each of the five divs. This also raises a peculiarity of D3 that is worth remembering: Any maniuplation only takes effect on the *last* thing that has been selected or appended. Just like the `selectAll` only worked on the body, and the `append` worked on the just-created div, this class assignment will work on the newest divs.
 
 
 
