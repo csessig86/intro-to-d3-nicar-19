@@ -92,10 +92,7 @@ d3.select("body").append('div').attr('class','bar')
 
 The code is pretty straightforward: Grab onto the `<body>` tag of the append, add a `<div>` tag inside it and add the attribute `class="bar" to the div. Plug that line of code into the space for javascript in the template, then open the browser to the HTML file. A blank page should appear. But if you crack open the inspector, you will see that 
 
-
-
-
-![Inspector]('mdfiles/inspector.png')
+![Inspector](mdfiles/inspector.png)
 
 
 
