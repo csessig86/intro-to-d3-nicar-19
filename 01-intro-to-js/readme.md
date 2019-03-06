@@ -216,7 +216,7 @@ for (var num = 0; num < 55; num++) {
 ```
 
 ### 10. Combining it all: variables, functions and for loops
-* We can also combine all of this and create a for loop to call a function every time it loops through:
+* We can also combine all of this and create a for loop that calls a function every time it loops through:
 ```javascript
 var number = 50;
 
