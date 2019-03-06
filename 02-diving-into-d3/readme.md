@@ -8,7 +8,9 @@ You may have produced a chart in the past, using a tool such as Excel, python or
 
 Today, we're going to focus on the fundamentals of D3.
 
-Our data visualization of choice will be the bar chart. We'll build one bar, then a few more, and then add some dressing to create a production-level graphic. We are going to create these files from scratch. For reference, the `final-charts/` folder contains the end result of every part of this tutorial. Refer to it if you get lost.
+Our data visualization of choice will be the bar chart. We'll build one bar, then a few more, and then add some dressing to create a production-level graphic.
+
+We are going start with empty text files for each part of the tutorial. For reference, the `final-charts/` folder contains the end results. Think of it as the answer sheet of a quiz. Feel free to ask questions along the way, and take a look at the final charts as needed.
 
 To understand the process of D3, it helps to take a step back from javascript. We'll start by working with only HTML and CSS.
 
@@ -133,7 +135,7 @@ Here's what's going on:
 
 `.data(dataset)` We are now making our small data set available to D3.
 
-`.enter()` Perhaps the most crucial step in this process. By using enter, we have now gained the ability to add items repeatedly the page. Anything we ask D3 to do after this will be repeated N times, where N is the number of items in the array (in our case, five times). It also preserves the *values* of the array for use later. This is what is D3 officially refers to as *binding* data to the DOM.
+`.enter()` Perhaps the most crucial step in this process. By using enter, we have now gained the ability to add items repeatedly the page. Anything we ask D3 to do after this will be repeated N times, where N is the number of items in the array (in our case, five times). It also preserves the *values* of the array for use later. This is what is D3 officially refers to as *binding* data to the page.
 
 `.append("div")` Here's where we append a div just as before. But now, this append step is going to be run five times.
 
@@ -167,9 +169,35 @@ Finally, we'll stretch the chart vertically with a little algebra inside the fun
 
 ![Stretched](mdfiles/stretched-bars.png)
 
+## Drawing bars on an SVG
 
+So far we've used D3 to add `<div>` tags to the page. In reality, D3 can add *any* HTML element to the page. It is especially helpul for charting when we add *SVGs* to the page.
 
+As we touched on earlier, SVG is its own markup language (just like HTML is a markup language) that renders graphical elements. Lines, rectangles and circles are all incredibly simple to create with SVGs, and it's possible to draw virtually any shape with slightly more complex notation.
 
+It is written just like HTML, with tags such as `<svg>` (which initializes the SVG, much like `<html>` starts off a web page), `<line>`, `<circle>` and more. And, like HTML, those tags have attributes. The code to produce a rectangle looks something like this: `<rect x = "20" y = "20" width = "300" height = "300"></rect>` And every part of that can be written onto the page using D3.
 
+The more ambiguous `<path>` tag allows for freeform drawing. It requires a special notation, which we will not cover today.
+
+### A blank SVG canvas
+
+We're now going to work in a new file, say `chart4.html`. You can initialize it just like before, with the basic HTML outline plus the D3 import.
+
+Try appending an SVG into the body based on what we've previously learned. Then, check the inspector to make sure the tag is there.
+
+With no attributes, it renders as nothing, just like an empty `<div>` tag. What we need to add to it is a width and a height. These are attributes that SVG understands, and can be added just like we added classes to a div. Pick dimensions that will form a rectangle slightly wider than it is long. And here is something new that will make sense in a second: Save the D3 output into a variable.
+
+```javascript
+var svg = d3.select("body")
+    .append("svg")
+    .attr('width', 125)
+    .attr('height', 120)
+```
+
+![Stretched](mdfiles/blank-svg.png)
+
+There it is: The canvas on which we are going to draw.
+
+Here's why we saved it into variable: In the [previous example](#drawing-bars-based-on-data), we started with by selecting `<body>`, then chained an `append` to it. By doing that, we lost our reference to the selection of `<body>`. To now add more stuff to the body tag, we have to 
 
 
