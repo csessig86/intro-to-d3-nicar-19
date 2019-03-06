@@ -136,7 +136,7 @@ Understanding data types is very important as you work with D3. Often times, you
 
 ### 7. If, else statements
 * This will run certain pieces of code based on a condition or conditions. If the condition isn't met, the code won't be ran.
-* These always end in an else statement, which is ran if none of the conditions above were met.
+* These always end in an 'else' statement, which is ran if none of the conditions above were met.
 ```javascript
 var number = 50;
 
