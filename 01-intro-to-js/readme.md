@@ -135,7 +135,8 @@ array_object[1]["artist"] // returns "Funkadelic"
 Understanding data types is very important as you work with D3. Often times, your data will look like objects inside of an array. For instance, if you're working with a CSV file, D3 will convert it into an array with each row in the spreadsheet being it's own object inside of that array.
 
 ### 7. If, else statements
-* This will run certain pieces of code based on a condition or conditions. Code that doesn't fit this condition or conditions will be ignored. These always end in an else statement, which is ran if none of the conditions are met.
+* This will run certain pieces of code based on a condition or conditions. If the condition isn't met, the code won't be ran.
+* These always end in an else statement, which is ran if none of the conditions are met.
 ```javascript
 var number = 50;
 
@@ -147,7 +148,7 @@ if (number === 50) {
 }
 ```
 
-* If you want to add more than one condition, you can add add the other conditions with 'else if' statements. In the example below, we'd added a second condition and it's not called because the number variable is not greater than 100.
+* If you want to add more than one condition, you can add the other conditions with 'else if' statements. In the example below, we'd added a second condition and it's not called because the number variable is not greater than 100.
 ```javascript
 var number = 50;
 
@@ -162,7 +163,7 @@ if (number === 50) {
 ```
 
 ### 8. Functions
-* You can also encapsulate pieces of code inside a function. This gives you the flexibility to call a function whenever you want.
+* You can also encapsulate pieces of code inside a function. This gives you the flexibility to call a function whenever you want. Any code wrapped inside a function is not run until you call the function.
 ```javascript
 var number = 50;
 
