@@ -19,6 +19,8 @@ console.log(5 + 10);
 
 As you work through this exercise, go ahead and type out the lines of code in your dev tool's console panel. When you do this, you will see the code being ran directly in the browser's console.
 
+![Using inspector to solve math problem](mdfiles/inspector-math.png)
+
 Alternatively, one can type these lines in your script.js file. If you do this, you will need to wrap them in a console.log statement to have the code shown to you in the browser's console.
 
 ### 2. Math, Dates
