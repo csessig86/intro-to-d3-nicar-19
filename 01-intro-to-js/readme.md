@@ -148,7 +148,7 @@ if (number === 50) {
 }
 ```
 
-* If you want to add more than one condition, you can add the other conditions with 'else if' statements. In the example below, we'd added a second condition and it's not called because the number variable is not greater than 100.
+* If you want to add more than one condition, you can add the other conditions with 'else if' statements. In the example below, we'd added a second condition and it's not called because the first condition was met.
 ```javascript
 var number = 50;
 
@@ -195,7 +195,7 @@ addFifty();
 
 ### 9. For loops
 * If we want a piece a code to run many times, we can call a 'for loop'. Inside a for loop, you can decide what number to start with and how many times you want the loop to be ran.
-* This for loop starts with the number 0 and increases every time through. As long as the number is below the number 10, the loop will be ran. Therefore, the loop will be ran a total of 10 times, and the last number to be ran will be 9. The loop will stop at 9 because we set the criteria that numbers must be under 10 to be ran.
+* This for loop starts with the number 0 (var num = 0) and increases every time through. As long as the number is below the number 10 (num < 10), the loop will be ran. Therefore, the loop will be ran a total of 10 times, and the last number to be ran will be 9. The loop will stop at 9 because we set the criteria that numbers must be under 10 to be ran.
 ```javascript
 for (var num = 0; num < 10; num++) {
   // The first time through num equals 0.
