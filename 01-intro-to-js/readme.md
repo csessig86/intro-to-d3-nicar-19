@@ -205,7 +205,7 @@ for (var num = 0; num < 10; num++) {
 }
 ```
 
-* If we change the second argument from "num < 10" to "num < 55", the loop would run 55 times instead of 10 times.
+* If we change the second argument from "num < 10" to "num < 55", the loop will run 55 times instead of 10 times.
 ```javascript
 for (var num = 0; num < 55; num++) {
   // The first time through num equals 0.
@@ -216,7 +216,7 @@ for (var num = 0; num < 55; num++) {
 ```
 
 ### 10. Combining it all: variables, functions and for loops
-* We can also create a for loop to call a function every time it loops through. This looks like so:
+* We can also combine all of this and create a for loop to call a function every time it loops through:
 ```javascript
 var number = 50;
 
