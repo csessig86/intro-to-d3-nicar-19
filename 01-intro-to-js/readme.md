@@ -246,7 +246,7 @@ Often, libraries are created to make it easier to do things in javascript that w
 ### Intro to D3
 D3 is a javascript library that is designed to work with data, whether it be objects like those shown in the example above or CSV files. One common use of D3 is helping developers create charts using data.
 
-With D3, you can use data to create and manipulate HTML elements. For instance, if you're working with a spreadsheet, you could create a DIV for each row in your spreadsheet. You could then change how that DIV looks based on the data in that row. This is, generally speaking, how many charts are made.oh
+With D3, you can use data to create and manipulate HTML elements. For instance, if you're working with a spreadsheet, you could create a DIV for each row in your spreadsheet. You could then change how that DIV looks based on the data in that row. This is, generally speaking, how many charts are made.
 
 In this directory is a file named iowa-electricity-renewables.csv, which shows how much of the energy consumed by Iowa residents was from renewable sources. It's broken down by year and as you can see, the use of renewable sources has gone up from 2001 to 2017. With D3, we could create a bar for every year in this spreadsheet, and the length of the bar would represent how much renewable energy was used in that year. We will do exactly this in part three of this course.
 
