@@ -25,6 +25,9 @@ Alternatively, one can type these lines in your script.js file. If you do this, 
 
 ![Console log statement in script.js](mdfiles/script-console-log.png)
 
+If you go this route, open up your index.html file in a browser and then open up your dev tools. You should see 
+
+
 ### 2. Math, Dates
 * The most basic thing you can do in javascript is math.
 ```javascript

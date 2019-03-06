@@ -1,2 +1,3 @@
 // Javascript can also go here
-console.log(5 + 10);
+console.log(15 + 10);
+
