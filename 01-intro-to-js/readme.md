@@ -7,6 +7,8 @@ Javascript is typically stored in .js files. It can also be written in html page
 
 In this example, we've created an index.html page and a script.js file, which you can use to write your javascript code. You will need to open up the index.html file in a browser, as well as that browser's developer tools. Here's more information on the dev tools for [Chrome](https://developer.chrome.com/devtools) and [Firefox](https://developer.mozilla.org/en-US/docs/Tools).
 
+The easiest way to open your developer tools is right click on any element on any page and click "Inspect" (or "Inspect Element" depending on your browser).
+
 ### 1. Comments, console.log
 * Comments allow you to write notes for your future self so you know what certain pieces of code are supposed to do. The script.js file already includes a comment.
 * Console.log statements are great for debugging code. Whatever is inside of the console.log statement will be shown in your browser's dev tools.
