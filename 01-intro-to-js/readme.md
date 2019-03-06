@@ -163,7 +163,7 @@ if (number === 50) {
 ```
 
 ### 8. Functions
-* You can also encapsulate pieces of code inside a function. This gives you the flexibility to call a function whenever you want. Any code wrapped inside a function is not run until you call the function.
+* You can also encapsulate pieces of code inside a function. This gives you the flexibility to call a function whenever you want. Any code inside the function is not run until you explicitly call the function.
 ```javascript
 var number = 50;
 
