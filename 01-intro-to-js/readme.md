@@ -136,7 +136,7 @@ Understanding data types is very important as you work with D3. Often times, you
 
 ### 7. If, else statements
 * This will run certain pieces of code based on a condition or conditions. If the condition isn't met, the code won't be ran.
-* These always end in an else statement, which is ran if none of the conditions are met.
+* These always end in an else statement, which is ran if none of the conditions above were met.
 ```javascript
 var number = 50;
 
@@ -162,8 +162,22 @@ if (number === 50) {
 }
 ```
 
+* In this example, the first condition is not met because the number is not more than 50. But the second condition is met because the number is under 100. The second condition is therefore ran.
+```javascript
+var number = 50;
+
+if (number > 50) {
+  // This code WILL NOT run because the condition above is not true
+  console.log(number);
+} else if (number < 100) {
+  // This code WILL run because the condition above is true
+} else {
+  // This code WILL also NOT be run
+}
+```
+
 ### 8. Functions
-* You can also encapsulate pieces of code inside a function. This gives you the flexibility to call a function whenever you want. Any code inside the function is not run until you explicitly call the function.
+* You can also encapsulate pieces of code inside a function. This gives you the flexibility to call code whenever you want. Any code inside the function is not run until you explicitly call the function.
 ```javascript
 var number = 50;
 
@@ -180,7 +194,7 @@ addFifty();
 ```
 
 ### 9. For loops
-* If we want a piece a code to run many times, we can call a for loop. Inside a for loop, you can decide what number to start with and how many times you want the loop to be ran.
+* If we want a piece a code to run many times, we can call a 'for loop'. Inside a for loop, you can decide what number to start with and how many times you want the loop to be ran.
 * This for loop starts with the number 0 and increases every time through. As long as the number is below the number 10, the loop will be ran. Therefore, the loop will be ran a total of 10 times, and the last number to be ran will be 9. The loop will stop at 9 because we set the criteria that numbers must be under 10 to be ran.
 ```javascript
 for (var num = 0; num < 10; num++) {
