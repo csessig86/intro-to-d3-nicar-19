@@ -27,7 +27,7 @@ Alternatively, you can type these lines in your script.js file. If you do this, 
 
 ![Console log statement in script.js](mdfiles/script-console-log.png)
 
-If you go this route, you'll need to next open up your index.html file in a browser and then open up it's dev tools. The index.html file links to the script.js file where you typed your code. Because of this, you should see the result of that console.log statement returned within the console panel.
+If you go this route, you'll need to make sure your index.html file is open in a browser, as well as the dev tools. The index.html file links to the script.js file where you typed your code. Because of this, you should see the result of that console.log statement returned within the console panel.
 
 ![Console log statement in script.js](mdfiles/inspector-math-two.png)
 
@@ -54,9 +54,6 @@ console.log( Math.round(10.7) );
 console.log(Math.max(0, 150, 30, 20, -8, -200) );
 console.log( Math.floor(4.7) );
 ```
-
-### A note about semicolons
-* You will note that statements have semicolons at the end of them. While your browser will still run if you don't include them, it's best practice to include them. Here's a [great guide](https://news.codecademy.com/your-guide-to-semicolons-in-javascript/) to help you further.
 
 ### 3. Numbers, strings and variables
 * Variables allow you store pieces of information to use later in your javascript file.
@@ -212,6 +209,9 @@ for (var num = 0; num < 10; num++) {
 // And each time 5 was added to its initial value of 50
 console.log(number);
 ```
+
+### A note about semicolons
+* You will note that statements have semicolons at the end of them. While your browser will still run if you don't include them, it's best practice to include them. Here's a [great guide](https://news.codecademy.com/your-guide-to-semicolons-in-javascript/) to help you further.
 
 ### Intro to D3
 After you have the basics of javascript down, you can start using javascript libraries, which are written and maintained by other javascript developers. Libraries are separate .js files that you will need to link to in your index.html file. You can do this by downloading the file or linking to the location of the file on the internet. Often, libraries are created to make it easier to do things in javascript that would otherwise be complicated and/or tedious to do without them. There are [many, many libraries](https://en.wikipedia.org/wiki/List_of_JavaScript_libraries) available to you that serve a ton of different purposes.
