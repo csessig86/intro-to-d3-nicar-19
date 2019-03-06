@@ -17,16 +17,17 @@ In this example, we've created an index.html page and a script.js file, which yo
 console.log(5 + 10);
 ```
 
-As you work through this exercise, go ahead and type out the lines of code in your dev tool's console panel. When you do this, you will see the code being ran directly in the browser's console.
+As you work through this exercise, go ahead and type out the lines of code in your dev tool's console panel and press "Enter". When you do this, you will see the code being ran directly in the browser's console.
 
 ![Using inspector to solve math problem](mdfiles/inspector-math.png)
 
-Alternatively, one can type these lines in your script.js file. If you do this, you will need to wrap them in a console.log statement to have the code shown to you in the browser's console.
+Alternatively, you can type these lines in your script.js file. If you do this, you will need to wrap them in a console.log statement to have the code shown to you in the browser's console.
 
 ![Console log statement in script.js](mdfiles/script-console-log.png)
 
-If you go this route, open up your index.html file in a browser and then open up your dev tools. You should see 
+If you go this route, you'll need to next open up your index.html file in a browser and then open up it's dev tools. The index.html file links to the script.js file where you typed your code. Because of this, you should see the result of that console.log statement returned within the console panel.
 
+![Console log statement in script.js](mdfiles/inspector-math-two.png)
 
 ### 2. Math, Dates
 * The most basic thing you can do in javascript is math.
