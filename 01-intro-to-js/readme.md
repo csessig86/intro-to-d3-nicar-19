@@ -23,6 +23,8 @@ As you work through this exercise, go ahead and type out the lines of code in yo
 
 Alternatively, one can type these lines in your script.js file. If you do this, you will need to wrap them in a console.log statement to have the code shown to you in the browser's console.
 
+![Console log statement in script.js](mdfiles/script-console-log.png)
+
 ### 2. Math, Dates
 * The most basic thing you can do in javascript is math.
 ```javascript
