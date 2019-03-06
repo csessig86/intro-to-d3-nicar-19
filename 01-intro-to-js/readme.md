@@ -19,7 +19,7 @@ The easiest way to open your developer tools is right click on any element on an
 console.log(5 + 10);
 ```
 
-As you work through this exercise, go ahead and type out the lines of code in your dev tool's console panel and press "Enter". When you do this, you will see the code being ran directly in the browser's console.
+As you work through this exercise, you can type out the lines of code in your dev tool's console panel and press "Enter". When you do this, you will see the code being ran directly in the browser's console.
 
 ![Using inspector to solve math problem](mdfiles/inspector-math.png)
 
@@ -70,7 +70,7 @@ number // returns 30
 string += ', the best programming language ever'; // This will return 'All hail Javascript, the best programming language ever'
 ```
 
-Remember that console.log statements are basically notes to yourself. You don't need console log statements to create and change variables, for instance, but if you want them to show up in your browser's console, one way to do this is wrap the variable name in a console.log statement like so:
+Remember that console.log statements are basically notes to yourself. You don't need console log statements to create and change variables, for instance, but if you want them to show up in your browser's console, you can wrap the variable name in a console.log statement like so:
 
 ```javascript
 console.log(number);
@@ -102,7 +102,7 @@ array_three[1] // returns "Sign o' the Times"
 ```
 
 ### 5. Data type: Objects
-* You can also store data using named attributes.
+* You can also store data using named attributes. These are called objects.
 ```javascript
 var object_one = {
   "artist": "Prince",
@@ -132,7 +132,7 @@ array_object[0]["artist"] // returns "Prince"
 array_object[1]["artist"] // returns "Funkadelic"
 ```
 
-Understanding data types is very important as you work with D3. Often times, your data will look like objects inside of an array. For instance, if you're working with a CSV file, D3 will convert that file into an array with each row in the spreadsheet being it's own object inside of the array.
+Understanding data types is very important as you work with D3. Often times, your data will look like objects inside of an array. For instance, if you're working with a CSV file, D3 will convert it into an array with each row in the spreadsheet being it's own object inside of that array.
 
 ### 7. If, else statements
 * This will run certain pieces of code based on a condition or conditions. Code that doesn't fit this condition or conditions will be ignored. These always end in an else statement, which is ran if none of the conditions are met.
@@ -147,14 +147,14 @@ if (number === 50) {
 }
 ```
 
-* Here's an example with an else if statement added. It's not called because the number variable is not greater than 50.
+* If you want to add more than one condition, you can add add the other conditions with 'else if' statements. In the example below, we'd added a second condition and it's not called because the number variable is not greater than 100.
 ```javascript
 var number = 50;
 
 if (number === 50) {
   // This code WILL run because the condition above is true
   console.log(number);
-} else if (number > 50) {
+} else if (number > 100) {
   // This code WILL NOT be run
 } else {
   // This code WILL also NOT be run
