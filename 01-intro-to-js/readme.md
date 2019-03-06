@@ -158,7 +158,7 @@ if (number === 50) {
 } else if (number > 100) {
   // This code WILL NOT be run
 } else {
-  // This code WILL also NOT be run
+  // This code also WILL NOT be run
 }
 ```
 
@@ -172,7 +172,7 @@ if (number > 50) {
   // This code WILL run because the condition above is true
   console.log(number);
 } else {
-  // This code WILL also NOT be run
+  // This code also WILL NOT be run
 }
 ```
 
@@ -238,16 +238,19 @@ console.log(number);
 ### A note about semicolons
 * You will note that statements have semicolons at the end of them. While your browser will still run if you don't include them, it's best practice to include them. Here's a [great guide](https://news.codecademy.com/your-guide-to-semicolons-in-javascript/) to help you further.
 
+### Javascript libraries
+After you have the basics of javascript down, you can start using javascript libraries, which are written and maintained by other javascript developers. Libraries are separate .js files that you will need to link to in your index.html file. You can do this by downloading the file or linking to the location of the file on the internet.
+
+Often, libraries are created to make it easier to do things in javascript that would otherwise be complicated and/or tedious to do without them. There are [many, many libraries](https://en.wikipedia.org/wiki/List_of_JavaScript_libraries) available to you that serve a ton of different purposes.
+
 ### Intro to D3
-After you have the basics of javascript down, you can start using javascript libraries, which are written and maintained by other javascript developers. Libraries are separate .js files that you will need to link to in your index.html file. You can do this by downloading the file or linking to the location of the file on the internet. Often, libraries are created to make it easier to do things in javascript that would otherwise be complicated and/or tedious to do without them. There are [many, many libraries](https://en.wikipedia.org/wiki/List_of_JavaScript_libraries) available to you that serve a ton of different purposes.
+D3 is a javascript library that is designed to work with data, whether it be objects like those shown in the example above or CSV files. One common use of D3 is helping developers create charts using data.
 
-D3 is a javascript library that is designed to work with data, whether it be objects like those shown in the example above or CSV files. One common use of D3 is to create charts using data.
+With D3, you can use data to create and manipulate HTML elements. For instance, if you're working with a spreadsheet, you could create a DIV for each row in your spreadsheet. You could then change how that DIV looks based on the data in that row. This is, generally speaking, how many charts are made.oh
 
-With D3, you can use data to create and manipulate HTML elements. For instance, if you're working with a spreadsheet, you could create a DIV for each row in your spreadsheet. You could then change how that DIV looks based on the data in that row. This is, generally speaking, how many charts are made.
+In this directory is a file named iowa-electricity-renewables.csv, which shows how much of the energy consumed by Iowa residents was from renewable sources. It's broken down by year and as you can see, the use of renewable sources has gone up from 2001 to 2017. With D3, we could create a bar for every year in this spreadsheet, and the length of the bar would represent how much renewable energy was used in that year. We will do exactly this in part three of this course.
 
-In this directory is a file named iowa-electricity-renewables.csv, which shows how much of the energy consumed by Iowa residents was from renewable sources. It's broken down by year and as you can see, the use of renewable sources has gone up from 2001 to 2017. With D3, we could create a bar for every year in this spreadsheet, and the length of the bar would represent how much renewable energy was used in that year. We will do exactly this in part two and three of the course.
-
-Most commonly, D3 is used to work with SVGs instead of DIVs. Scalable vector graphics (SVG) is a markup language used to render graphics, and they have a lot more flexibility when it comes to building charts. Like DIVs, you can include SVGs within the body tag inside your index.html file. We will discuss SVGs in the second part of this course.
+Most commonly, D3 is used to work with SVGs instead of DIVs. Scalable vector graphics (SVG) is a markup language used to render graphics, and they have a lot more flexibility when it comes to building charts. Like DIVs, you can include SVGs within the body tag inside your index.html file. We will discuss SVGs in the third part of this course.
 
 ### 1. Examples using D3
 
