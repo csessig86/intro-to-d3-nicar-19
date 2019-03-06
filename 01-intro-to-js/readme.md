@@ -168,9 +168,9 @@ var number = 50;
 
 if (number > 50) {
   // This code WILL NOT run because the condition above is not true
-  console.log(number);
 } else if (number < 100) {
   // This code WILL run because the condition above is true
+  console.log(number);
 } else {
   // This code WILL also NOT be run
 }
