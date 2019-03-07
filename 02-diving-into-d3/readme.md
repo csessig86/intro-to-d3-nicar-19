@@ -257,6 +257,15 @@ Our x positions should be 0, 22, 44, 66, 88. Put another way, the correct positi
 
 #### y
 
+As we dicussed before, the y coordinates start at 0 from the top and increase as you move lower down the SVG. In our example, the y coordinate is bigger at the beginning, then decreases for each bar. How much does it decrease by? That depends on the data value.
+
+There are different ways to think about this but here: The bar has to *grow from the bottom up to its height*. So if we start from the bottom, then move up by the height, we should get to the correct y coordinate.
+
+Where is the bottom? At the y coordinate 120, which we defined earlier. How tall should each bar be? d*5 pixels, as we wrote in the height attribute. Put that together and we can write a D3 line like this:
+
+```javascript
+.attr("y", function(d,i) { return i * 22 })
+```
 
 
 
