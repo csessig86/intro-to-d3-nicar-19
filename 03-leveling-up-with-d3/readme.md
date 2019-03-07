@@ -266,5 +266,26 @@ This will remove and redraw your chart every time to resize the page. Let's try 
 We're almost there. Last step: Adding tooltips.
 
 ## Tooltips in d3 charts
+We'll be following `08-iowa-energy-tooltips.html` if you need a reference.
 
+To make this tooltip, we'll make a small, absolutely positioned div that moves with our mouse. Right below `canvas.append('g').call(yAxis);`, we'll create a variable called `var tooltip`, and using d3, we'll attach a div to the body of the page like so:
+               
+```javascript
+var tooltip = d3.select("body").append("div")
+.style("position", "absolute")
+.style("z-index", "10")
+.style("visibility", "hidden")
+.style("color", "white")
+.style("padding", "8px")
+.style("background-color", "rgba(0, 0, 0, 0.75)")
+.style("border-radius", "6px")
+.style("font", "12px sans-serif")
+.text("tooltip");
+```
+If you refresh your page, you won't see anything different, because we've set the `visibility` to `hidden.` It's also empty -- we haven't put any text in it yet. 
 
+```javascript
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+```
