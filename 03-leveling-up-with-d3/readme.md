@@ -49,7 +49,7 @@ function transformData(data) {
                 )
             }
 ```
-This will change rework your data into something more workable. Now, let's bind the svg to the page and take a look at how it comes together. Below where your `transformData` function ends, paste:
+`data.map` is a d3 function that will re-structure your data into an iterable object with key-value pairs. Now, let's bind the svg to the page and take a look at how it comes together. Below where your `transformData` function ends, paste:
 
 ```javascript
 function makeChart(rawData) {
@@ -69,3 +69,51 @@ We'll build the rest our basic chart inside this function. Right now, we've appe
 To see how these two functions come together, change the last line of your code from 
 `d3.csv('iowa-renewable-energy.csv', function(data){ console.log(data) });` to `d3.csv('iowa-renewable-energy.csv').then(makeChart);`. If you look in the console, you should the same dataset, but formatted differently.
 
+Let's start making the chart! First, our x- and y-axes. Under `var data = transformData(rawData);` paste: 
+```javascript
+var xScale = d3.scaleBand()
+    .domain(data.map(function(d) { 
+        return d.year 
+    }))
+    .range([0, chartWidth])
+    .padding(0.1);
+var yScale = d3.scaleLinear()
+    .domain([0, d3.max(data, function(d) { return d.megawatts })]).nice()
+    .range([chartHeight, 0]);
+```
+This will set the units for each axes. The x-axis uses the *years* in the csv, and sets the width of the chart based on the variable we declared above. We can also set some padding between bars. The y-axis is set by the *megawatts*, and uses the height we've specified as a maximum value. If you're curious about what's going on in each function, you can always hop in the console -- for example, if you change your xScale function to: 
+```javascript
+var xScale = d3.scaleBand()
+    .domain(data.map(function(d) { 
+        return d.year 
+        console.log(d.year);
+    }))
+    .range([0, chartWidth])
+    .padding(0.1);
+``` 
+You'll see a list of every year in the dataset. Now let's draw the bars. After your `yScale` variable, paste:
+```javascript
+var bars = canvas.append('g')
+    .attr('id', 'bars')
+    .selectAll("rect")
+    .data(data)
+    .enter()
+    .append("rect")
+    .style("fill", "teal")
+    .attr("x", function(d) { return xScale(d.year); })
+    .attr("y", function(d) { return yScale(d.megawatts); })
+    .attr("height", function(d) { return chartHeight - yScale(d.megawatts); console.log(yScale(d.megawatts))})
+    .attr("width", xScale.bandwidth())
+    .attr("data-year", function(d) { return d.year })
+    .attr("data-megawatts", function(d) { return d.megawatts })
+```
+
+Now refresh your page and you should see something that looks just like a chart! You've already gone over the basics of creating bars using `rect` in d3, so let's take a look at how d3 takes the data we've input to create the x and y positions.
+
+IMAGE HERE
+
+The x-values are all roughly 29-30 units apart, which makes sense, because they all need to be equally spaced along the axis. The y-values uses the axis function we created earlier to position the bars. The height is calculated by subtracting that value by the height of the overall div. 
+
+Now that we've got the bones of our chart, let's draw and label our axes
+
+## Creating axes on a d3 chart
