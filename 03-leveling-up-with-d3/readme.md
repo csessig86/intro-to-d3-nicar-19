@@ -228,3 +228,43 @@ var chartWidth = document.getElementById("chartholder").clientWidth - chartMargi
 var chartHeight = isMobile ? 400 : 200; \\ will be 200px tall on desktop and 400px on a phone.
 ```
 
+Then, we'll change our `var container` variable to append the chart to the div we made in the HTML. Change the variable to:
+```javascript
+var container = d3.select('#chartholder')
+.append('svg')
+    .attr('id', 'container')
+    .attr('width', chartWidth + chartMargin.left + chartMargin.right)
+    .attr('height', chartHeight + chartMargin.top + chartMargin.bottom);
+```
+
+Now, if you refresh you'll see a wider, shallow chart -- ideal for a desktop view!
+
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/desktop.png?raw=true" width="500px"/>
+
+But if you resize the page, you'll see our chart runs offscreen. Let's fix that. First, we'll remove `var data = transformData(rawData);` from our `makeChart` function. We'll call it in a minute.
+
+Then, at the very bottom of your script, change your `d3.csv` script to:
+
+```javascript
+var data;
+d3.csv('iowa-renewable-energy.csv').then(
+    function(d) {
+        data = transformData(d);
+        makeChart();
+        window.addEventListener('resize', makeChart);
+    }
+);
+```
+Make sure you declare `var data;` above the function! Now, when you resize...you'll see that it's just drawing the same chart over and over. We have one small step left to fix that. At the *very beginning* inside your `makeChart` function, add this line:
+
+```javascript
+d3.select('svg#container').remove();
+```
+
+This will remove and redraw your chart every time to resize the page. Let's try it! You should see a smoothly resizing chart.
+
+We're almost there. Last step: Adding tooltips.
+
+## Tooltips in d3 charts
+
+
