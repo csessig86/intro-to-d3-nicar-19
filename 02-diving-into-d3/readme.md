@@ -264,21 +264,9 @@ There are different ways to think about this but here: The bar has to *grow from
 Where is the bottom? At the y coordinate 120, which we defined earlier. How tall should each bar be? d*5 pixels, as we wrote in the height attribute. Put that together and we can write a D3 line like this:
 
 ```javascript
-.attr("y", function(d,i) { return i * 22 })
+.attr("y", function(d,i) { return 120 - (d*5) })
 ```
 
+Attach those attributes to the end of the append call, refresh the browser and check it out. You should see five black bars. Check it out in the inspector too. Pop on a `fill` attribute (hopefully you can figure out now how to do this) with the color you chose before, and you should have a bar chart just like the one we did in HTML and CSS.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+It might have seemed repetitive to do the same simple bar chart over and over again. But you've just learned some of the most essential fundamentals for writing D3 code. Knowing the ins and outs of how D3 adds elements to the page comes in handy for virtually any chart you create. Now it's time to level up.
