@@ -145,9 +145,9 @@ var canvas = container.append('g')
 
 If you refresh your page, you should see the same chart, but with some space around the sides. We've made room for our scales. 
 
-<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/a1f309aa2183e6d9b6488f1a25df1109c73afa28/03-leveling-up-with-d3/Screen%20Shot%202019-03-06%20at%204.55.52%20PM.png?raw=true" width="200px"/>
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/large-margins.png?raw=true" width="500px"/>
 
-<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/a1f309aa2183e6d9b6488f1a25df1109c73afa28/03-leveling-up-with-d3/Screen%20Shot%202019-03-06%20at%204.56.16%20PM.png?raw=true" width="200px"/>
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/margins.png?raw=true" width="500px"/>
 
 Now let's add the text for our scales.
 
