@@ -225,7 +225,7 @@ Now, we'll need to fiddle with the size of our chart width and height. For our d
 
 ```javascript
 var chartWidth = document.getElementById("chartholder").clientWidth - chartMargin.left - chartMargin.right; \\uses the div we created in HTML to set the width of the chart
-var chartHeight = isMobile ? 400 : 200; \\ will be 200px tall on desktop and 400px on a phone.
+var chartHeight = isMobile ? 400 : 200; // will be 200px tall on desktop and 400px on a phone.
 ```
 
 Then, we'll change our `var container` variable to append the chart to the div we made in the HTML. Change the variable to:
@@ -282,10 +282,66 @@ var tooltip = d3.select("body").append("div")
 .style("font", "12px sans-serif")
 .text("tooltip");
 ```
-If you refresh your page, you won't see anything different, because we've set the `visibility` to `hidden.` It's also empty -- we haven't put any text in it yet. 
+If you refresh your page, you won't see anything different, because we've set the `visibility` to `hidden.` It's also empty -- we haven't put any text in it yet. Now, let's get it on the page. We won't want a tooltip on a phone, because they're hard to read and use on a mobile device. We'll first create an if statement, which we'll put under our tooltip variable:
 
+```javascript
+if (!isMobile) {
+    //tooltip code will go here -- function will only run on a 768px screen or greater.
+}
+```
+Now, in our if statement, we'll add some tooltip text using the data from our .csv:
+
+```javascript
+bars.on("mouseover", function(d) {
+    tooltip.html('Year: ' + d.year + '<br />' + (d.megawatts) + ' megawatts');
+    tooltip.style("visibility", "visible");
+});
+```
+If we refresh, we'll see a small tooltip at the bottom of our chart when we hover over the bars!
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/tooltip_first.png?raw=true" width="550px"/>
+
+But this isn't exactly what we want. First, let's add some commas to those numbers. Paste this function *above* your `if (!isMobile)`statement: 
 ```javascript
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 ```
+
+Then, inside your mouseover function, replace the `tooltip.html` line with:
+```javascript
+tooltip.html('Year: ' + d.year + '<br />' + numberWithCommas(d.megawatts) + ' megawatts');
+```
+
+If you refresh, you'll see that the numbers in your tooltip now have commas, but they're still at the bottom of the page. We want the tooltip to appear over the bars when we hover over them, and to disappear when our mouse is off the bars. 
+
+Inside your `if (!isMobile)` statement and under the `bars.on("mouseover")` function, paste:
+```javascript
+.on("mousemove", function() {
+    return tooltip.style("top", (d3.event.pageY - 10)+"px").style("left",(d3.event.pageX + 10)+"px");
+})
+.on("mouseout", function() {
+    return tooltip.style("visibility", "hidden");
+});
+```
+
+Your if statement should look like this in full:
+```javascript
+if (!isMobile) {
+    bars.on("mouseover", function(d) {
+        tooltip.html('Year: ' + d.year + '<br />' + (d.megawatts) + ' megawatts');
+        tooltip.style("visibility", "visible");
+    })
+    .on("mousemove", function() {
+        return tooltip.style("top", (d3.event.pageY - 10)+"px").style("left",(d3.event.pageX + 10)+"px"); // positions the tooltip slightly offset to where the mouse pointer is
+    })
+    .on("mouseout", function() {
+        return tooltip.style("visibility", "hidden"); // hides the tooltip when you mouse off of the bars
+    });
+}
+```
+Refresh your page and you should see a beautiful tooltip moving with your mouse! You did it!
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/tooltip_end.png?raw=true" width="550px"/>
+
+## What's next?
+
+Now you can play around with everything we just did -- you can mess around in the CSS, try adding and parsing your own data -- whatever you want! The d3 world is your oyster.
