@@ -181,7 +181,7 @@ The more ambiguous `<path>` tag allows for freeform drawing. It requires a speci
 
 ### A blank SVG canvas
 
-We're now going to work in a new file, say `chart4.html`. You can initialize it just like before, with the basic HTML outline plus the D3 import.
+We're now going to work in a new file, say `chart4.html`. You can initialize it just like before, with the basic HTML outline plus the D3 import. Then add a data array.
 
 Try appending an SVG into the body based on what we've previously learned. Then, check the inspector to make sure the tag is there.
 
@@ -198,6 +198,78 @@ var svg = d3.select("body")
 
 There it is: The canvas on which we are going to draw.
 
-Here's why we saved it into variable: In the [previous example](#drawing-bars-based-on-data), we started with by selecting `<body>`, then chained an `append` to it. By doing that, we lost our reference to the selection of `<body>`. To now add more stuff to the body tag, we have to 
+Here's why we saved it into variable: In the [previous example](#drawing-bars-based-on-data), we started with by selecting `<body>`, then chained an `append` to it to create divs. By doing that, we lost our reference to the selection of `<body>`. To now add more stuff to the `<body>` we have to operate on a selection. We could just as easily write `d3.select("body")` again, but by saving the selection to a variable, we can save some typing and reuse code we've already written.
+
+In this case, because the last thing we appended is an SVG, and *D3 code refers to only the last* thing that has been selected or appended*, the variable `svg` will refer to the newly created SVG. This is a fairly common convention. Oftentimes, you must instantiate the SVG, add some stuff to it, then add some totally unrelated stuff to it.
+
+This empty canvas needs some bars. To do that, we are going to turn to `<rect>`. What it requires is a starting coordinate, defined by an `x` and a `y`, and a `width` and `height`, all in pixels. (Here is the [official documentation](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect) for it. The Mozilla website contains very useful guides for all the HTML and SVG tags we are discussing in this couse.)
+
+Let's start with the [coordinates](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Positions). **The top left corner of the SVG is always its (0,0) point.** The y value increases as you move down, and the x value increases as you move to the right. In our case, based on the SVG we just wrote, we have y values between 0 and 120 and x values between 0 and 125.
+
+To know what to fill in for coordinates and dimensions, it helps to think about where we were before. Here again is our end result from the previous example, which we would like to replicate on this SVG.
+
+![Stretched](mdfiles/stretched-bars.png)
+
+To start, we'll bind the data just as before (now using the `svg` variable), only this time we'll append rectangles.
+
+```javascript
+svg.selectAll('rect')
+    .data(dataset)
+    .enter()
+    .append('rect')
+```
+
+Now we have to give those rects some attributes.
+
+For each bar, the coordinate we have to define is its *top left corner*. From there, the rectangle will be extended horizontally by the number of pixels in the `width` attribute and vertically by the `height`.
+
+Let's break down what to fill in:
+
+#### width
+
+This is constant for each bar. We used 20 pixels in CSS before. That will work again.
+
+```javascript
+.attr("width", 20)
+```
+
+#### height
+
+This varies according to the data. We last used `d*5`, where d was the data value. That too will work again.
+
+```javascript
+.attr("height", function(d) { return d * 5 })
+```
+
+#### x
+
+Imagine horizontal lines drawn through the top left corner of each bar. They will be spaced out at regular intervals, and will not change even if the data values do.
+
+These are spaced out 20 pixels apart (the width of the bar), so if the first one starts at the x-coordinate 0, the second should come where x is 20, then 40, and so on. Except! We added a little bit of cushion in between the bars, so those intervals aren't quite right. In our previous example, it was 2 pixels to the right of each bar. So, it follows, the x coordinate needs to be incremented by the width **plus** the bar padding. The first one should be at 0, the second one at 22, the third one at 44.
+
+This varies based on *which bar we're drawing*, so it would be helpful to know that as D3 loops through the rectangles. Luckily, D3 provides a convenient method for that. We previously used an anonymous function to access the data value. Those functions can take an optional second argument that returns the **index** of the bar, starting at 0 and incrementing by one.
+
+Our x positions should be 0, 22, 44, 66, 88. Put another way, the correct position for each bar is N*22, where N is the index of the bar. Here's how we'll write that in D3.
+
+```javascript
+.attr("x", function(d,i) { return i * 22 })
+```
+
+#### y
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
