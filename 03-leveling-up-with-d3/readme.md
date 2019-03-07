@@ -112,8 +112,80 @@ Now refresh your page and you should see something that looks just like a chart!
 
 IMAGE HERE
 
-The x-values are all roughly 29-30 units apart, which makes sense, because they all need to be equally spaced along the axis. The y-values uses the axis function we created earlier to position the bars. The height is calculated by subtracting that value by the height of the overall div. 
+The x-values are all roughly 29-30 units apart, because they all need to be equally spaced along the axis. The y-values uses the axis function we created earlier to position the bars. The height is calculated by subtracting that value by the height of the overall div. 
 
-Now that we've got the bones of our chart, let's draw and label our axes
+Now that we've got the bones of our chart, let's draw and label our axes.
 
 ## Creating axes on a d3 chart
+
+We'll be working off of the code in `06-iowa-energy-axes.html` if you need a reference.
+
+First, we'll need to make space for the axes -- right now, our chart is taking up all of the room on our canvas, so let's add some breathing space. 
+
+In your `makeChart` function, add the following line after the `chartHeight` variable:
+```script
+var chartMargin = {top: 10, right: 10, bottom: 10, left: 20};
+```
+Now we'll need to change things up a bit. In our previous chart, we just made one `g` group and appended it to the HTML body. We'll need to create a couple to add our axes, so let's first make one container SVG to hold everything in. After your `chartMargin` variable, paste:
+
+```javascript
+var container = d3.select('body')
+.append('svg')
+    .attr('id', 'container')
+    .attr('width', chartWidth + chartMargin.left + chartMargin.right)
+    .attr('height', chartHeight + chartMargin.top + chartMargin.bottom);
+```
+Delete your existing `var canvas` and replace it with: 
+
+```javascript
+var canvas = container.append('g')
+    .attr('id', 'canvas')
+    .attr('transform', 'translate(' + chartMargin.left + ',' + chartMargin.top + ')');
+```
+
+If you refresh your page, you should see the same chart, but with some space around the sides. We've made room for our scales. 
+
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/a1f309aa2183e6d9b6488f1a25df1109c73afa28/03-leveling-up-with-d3/Screen%20Shot%202019-03-06%20at%204.55.52%20PM.png?raw=true" width="200px"/>
+
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/a1f309aa2183e6d9b6488f1a25df1109c73afa28/03-leveling-up-with-d3/Screen%20Shot%202019-03-06%20at%204.56.16%20PM.png?raw=true" width="200px"/>
+
+Now let's add the text for our scales.
+
+At the bottom of your `makeChart` function, paste:
+
+```javascript
+function xAxis(g) { 
+    return g.attr("transform", 'translate(0,' + (chartHeight - chartMargin.bottom) + ')') // positions the scale at the (almost) bottom of the canvas.
+    .call(d3.axisBottom(xScale).tickSizeOuter(0)) // (0) prevents ticks being drawn on the far left and right of the axis, gives it a cleaner look
+}
+function yAxis(g) { 
+return g.attr("transform", 'translate(' + chartMargin.left + ',0)') // positions scale on the left side of chart, flush with the edge of the chart
+    .call(d3.axisLeft(yScale))
+}
+canvas.append('g').call(xAxis); // draw the scales
+canvas.append('g').call(yAxis);
+```
+D3's charting functions make it easy to draw a scale with evenly spaced ticks on the x- and y-axis, which we've done here. But if you refresh your page, you'll see things don't look quite right.
+
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/bad-axes.png?raw=true" width ="350px" />
+
+That's because we need to tell d3 to draw our chart with regard to the margins we specified. Let's do that now. Change your `xScale` and `yScale` variables to:
+
+```javascript
+var xScale = d3.scaleBand()
+    .domain(data.map(function(d) { return d.year }))
+    .range([chartMargin.left, chartWidth - chartMargin.right]) \\ sets the drawing starting point 20px to the left, and will make it 10px less wide.
+    .padding(0.1);
+var yScale = d3.scaleLinear()
+    .domain([0, d3.max(data, function(d) { return d.megawatts })]).nice()
+    .range([chartHeight - chartMargin.bottom, chartMargin.top]); \\ sets the drawing starting point 10px below where it originally was, making room for the x-axis.
+```
+Since we've resized the scales, we'll also need to change the height of our bars. In your `var bars` variable, change the `attr("height")` function to:
+
+```javascript
+.attr("height", function(d) { return (chartHeight - chartMargin.bottom) - yScale(d.megawatts); }) \\shrinks the height of the bars by the specified margin.
+```
+
+Now, if you refresh you should see a properly spaced chart with nice x- and y-axes!
+
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/scales.png?raw=true" width = "350px" />
