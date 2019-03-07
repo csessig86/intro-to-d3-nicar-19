@@ -167,7 +167,7 @@ canvas.append('g').call(yAxis);
 ```
 D3's charting functions make it easy to draw a scale with evenly spaced ticks on the x- and y-axis, which we've done here. But if you refresh your page, you'll see things don't look quite right.
 
-<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/bad-axes.png?raw=true" width ="350px" />
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/bad-axes.png?raw=true" width ="450px" />
 
 That's because we need to tell d3 to draw our chart with regard to the margins we specified. Let's do that now. Change your `xScale` and `yScale` variables to:
 
@@ -188,4 +188,43 @@ Since we've resized the scales, we'll also need to change the height of our bars
 
 Now, if you refresh you should see a properly spaced chart with nice x- and y-axes!
 
-<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/scales.png?raw=true" width = "350px" />
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/scales.png?raw=true" width = "450px" />
+
+Looks great! But what if we shrink our browser? It's time to make this chart responsive.
+
+## Making d3 charts responsive
+
+We'll be working off of `07-iowa-energy-responsive.html` if you need guidance. Let's get started!
+
+There are many, many ways to make a d3 chart responsive, but we're going to go with our favorite: Redrawing the chart every time we resize the page. This method is straightforward and works well for small charts like this.
+
+For the first time in this section, we're going to add some HTML and CSS to our page. In your empty `<style></style>` tags, add:
+
+```CSS
+#chartholder {
+    max-width: 800px;
+}
+```
+
+In the beginning of your `<body></body>` section, add:
+
+```HTML
+<div id='chartholder'> <!-- d3 will put the chart here --> </div>
+```
+
+Now, let's write a line that will tell us if we're looking at this chart on a desktop or phone-sized window. In at the top of your `makeChart` function, add:
+
+```javascript
+    var windowWidth = window.innerWidth;
+    var isMobile = windowWidth <= 767 ? true : false;
+```
+
+If we type `console.log(isMobile)` in the function and refresh, we'll see if we are looking at a desktop or phone-sized screen.
+
+Now, we'll need to fiddle with the size of our chart width and height. For our desktop view, we'll draw a wider, shallower chart, but we'll want a taller and more narrow chart on a mobile screen. Replace your `chartWidth` and `chartHeight` variables with:
+
+```javascript
+var chartWidth = document.getElementById("chartholder").clientWidth - chartMargin.left - chartMargin.right; \\uses the div we created in HTML to set the width of the chart
+var chartHeight = isMobile ? 400 : 200; \\ will be 200px tall on desktop and 400px on a phone.
+```
+
