@@ -53,16 +53,16 @@ function transformData(data) {
 
 ```javascript
 function makeChart(rawData) {
-                var chartWidth = 500;
-                var chartHeight = 200;
-                var canvas = d3.select('body')
-                    .append('svg')
-                        .attr('id', 'container')
-                        .attr('width', chartWidth)
-                        .attr('height', chartHeight)
-                var data = transformData(rawData);
-                console.log(data);
-            }
+    var chartWidth = 500;
+    var chartHeight = 200;
+    var canvas = d3.select('body')
+        .append('svg')
+            .attr('id', 'container')
+            .attr('width', chartWidth)
+            .attr('height', chartHeight)
+    var data = transformData(rawData);
+    console.log(data);
+}
 ```
 We'll build the rest our basic chart inside this function. Right now, we've appended a blank SVG to the body of our page, with a height and width that we've specified. Lastly, we're running our `transformData` function to format our data for our chart in the way we want.
 
@@ -130,7 +130,7 @@ Now we'll need to change things up a bit. In our previous chart, we just made on
 
 ```javascript
 var container = d3.select('body')
-.append('svg')
+    .append('svg')
     .attr('id', 'container')
     .attr('width', chartWidth + chartMargin.left + chartMargin.right)
     .attr('height', chartHeight + chartMargin.top + chartMargin.bottom);
@@ -155,7 +155,7 @@ At the bottom of your `makeChart` function, paste:
 
 ```javascript
 function xAxis(g) { 
-    return g.attr("transform", 'translate(0,' + (chartHeight - chartMargin.bottom) + ')') // positions the scale at the (almost) bottom of the canvas.
+    return g.attr("transform", 'translate(0,' + (chartHeight - chartMargin.bottom) + ')') // positions the scale at the         (almost) bottom of the canvas.
     .call(d3.axisBottom(xScale).tickSizeOuter(0)) // (0) prevents ticks being drawn on the far left and right of the axis, gives it a cleaner look
 }
 function yAxis(g) { 
@@ -174,16 +174,16 @@ That's because we need to tell d3 to draw our chart with regard to the margins w
 ```javascript
 var xScale = d3.scaleBand()
     .domain(data.map(function(d) { return d.year }))
-    .range([chartMargin.left, chartWidth - chartMargin.right]) \\ sets the drawing starting point 20px to the left, and will make it 10px less wide.
+    .range([chartMargin.left, chartWidth - chartMargin.right]) // sets the drawing starting point 20px to the left, and will make it 10px less wide.
     .padding(0.1);
 var yScale = d3.scaleLinear()
     .domain([0, d3.max(data, function(d) { return d.megawatts })]).nice()
-    .range([chartHeight - chartMargin.bottom, chartMargin.top]); \\ sets the drawing starting point 10px below where it originally was, making room for the x-axis.
+    .range([chartHeight - chartMargin.bottom, chartMargin.top]); // sets the drawing starting point 10px below where it originally was, making room for the x-axis.
 ```
 Since we've resized the scales, we'll also need to change the height of our bars. In your `var bars` variable, change the `attr("height")` function to:
 
 ```javascript
-.attr("height", function(d) { return (chartHeight - chartMargin.bottom) - yScale(d.megawatts); }) \\shrinks the height of the bars by the specified margin.
+.attr("height", function(d) { return (chartHeight - chartMargin.bottom) - yScale(d.megawatts); }) //shrinks the height of the bars by the specified margin.
 ```
 
 Now, if you refresh you should see a properly spaced chart with nice x- and y-axes!
@@ -224,14 +224,14 @@ If we type `console.log(isMobile)` in the function and refresh, we'll see if we 
 Now, we'll need to fiddle with the size of our chart width and height. For our desktop view, we'll draw a wider, shallower chart, but we'll want a taller and more narrow chart on a mobile screen. Replace your `chartWidth` and `chartHeight` variables with:
 
 ```javascript
-var chartWidth = document.getElementById("chartholder").clientWidth - chartMargin.left - chartMargin.right; \\uses the div we created in HTML to set the width of the chart
+var chartWidth = document.getElementById("chartholder").clientWidth - chartMargin.left - chartMargin.right; // uses the div we created in HTML to set the width of the chart
 var chartHeight = isMobile ? 400 : 200; // will be 200px tall on desktop and 400px on a phone.
 ```
 
 Then, we'll change our `var container` variable to append the chart to the div we made in the HTML. Change the variable to:
 ```javascript
 var container = d3.select('#chartholder')
-.append('svg')
+    .append('svg')
     .attr('id', 'container')
     .attr('width', chartWidth + chartMargin.left + chartMargin.right)
     .attr('height', chartHeight + chartMargin.top + chartMargin.bottom);
