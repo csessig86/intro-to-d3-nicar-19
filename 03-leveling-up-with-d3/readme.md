@@ -8,6 +8,9 @@ D3 can work with many different types of data formats, but the most common for c
 
 Once we've used the data to create a simple bar chart, then we'll get into some of the trickier aspects of d3 charting. We'll add an x- and y-axis and tackle making the chart responsive. Lastly, we'll add some tooltips to our newly-responsive chart!
 
+## Firing up a server
+We're going to start a quick server. Open up your terminal and navigate to the folder where the class files are. Once you're there, type `python -m SimpleHTTPServer 8888` and hit enter. Now, if you enter `localhost:8888` into your browser, you should see a folder with some files in it.
+
 ## Attaching data to a bar chart
 We're going to create a new bar chart. This one will eventually have a data from a .csv file attached to it. Navigate to the folder `03-leveling-up-with-d3/` (the same folder where this readme.md file is located) and create a new text file. Save it with a name such as `chart_final.html`. If you get lost, refer to `05-iowa-energy-bars.html`.
 
