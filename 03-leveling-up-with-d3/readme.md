@@ -1,5 +1,5 @@
 # Part 3: Leveling up with D3
-_Portions of this class were inspired by the approach taken in the book Interactive Data Visualization for the Web: An Introduction to Designing with D3 by Scott Murray (2nd edition)._
+*Portions of this class were inspired by the approach taken in the book [Interactive Data Visualization for the Web: An Introduction to Designing with D3](https://alignedleft.com/work/d3-book-2e) by Scott Murray (2nd edition).*
 
 ## What are we doing here?
 By now, you've learned the basics of D3. You've created a simple bar chart and have attached some numbers to it. You've learned about x- and y-positioning in an SVG. Now, for this part of the class, we're going to look at a more practical application of d3 -- extracting data from a dataset and visualizing it with a chart.
