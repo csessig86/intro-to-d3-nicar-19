@@ -347,4 +347,7 @@ Refresh your page and you should see a beautiful tooltip moving with your mouse!
 Now you can play around with everything we just did -- you can mess around in the CSS, try adding and parsing your own data -- whatever you want! 
 
 Some good resources:
+
 [Interactive Data Visualization for the Web: An Introduction to Designing with D3](https://alignedleft.com/work/d3-book-2e)
+[D3 examples on Observable](https://observablehq.com/@d3)
+[Dashing D3.js (for video tutorials)](https://www.dashingd3js.com/)
