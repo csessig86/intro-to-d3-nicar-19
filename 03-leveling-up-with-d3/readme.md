@@ -157,8 +157,10 @@ At the bottom of your `makeChart` function, paste:
 
 ```javascript
 function xAxis(g) { 
-    return g.attr("transform", 'translate(0,' + (chartHeight - chartMargin.bottom) + ')') // positions the scale at the         (almost) bottom of the canvas.
-    .call(d3.axisBottom(xScale).tickSizeOuter(0)) // (0) prevents ticks being drawn on the far left and right of the axis, gives it a cleaner look
+    return g.attr("transform", 'translate(0,' + (chartHeight - chartMargin.bottom) + ')') 
+    // positions the scale at the (almost) bottom of the canvas.
+    .call(d3.axisBottom(xScale).tickSizeOuter(0)) 
+    // (0) prevents ticks being drawn on the far left and right of the axis, gives it a cleaner look
 }
 function yAxis(g) { 
 return g.attr("transform", 'translate(' + chartMargin.left + ',0)') // positions scale on the left side of chart, flush with the edge of the chart
@@ -180,17 +182,19 @@ var xScale = d3.scaleBand()
     .padding(0.1);
 var yScale = d3.scaleLinear()
     .domain([0, d3.max(data, function(d) { return d.megawatts })]).nice()
-    .range([chartHeight - chartMargin.bottom, chartMargin.top]); // sets the drawing starting point 10px below where it originally was, making room for the x-axis.
+    .range([chartHeight - chartMargin.bottom, chartMargin.top]); 
+    // sets the drawing starting point 10px below where it originally was, making room for the x-axis.
 ```
 Since we've resized the scales, we'll also need to change the height of our bars. In your `var bars` variable, change the `attr("height")` function to:
 
 ```javascript
-.attr("height", function(d) { return (chartHeight - chartMargin.bottom) - yScale(d.megawatts); }) //shrinks the height of the bars by the specified margin.
+.attr("height", function(d) { return (chartHeight - chartMargin.bottom) - yScale(d.megawatts); }) 
+//shrinks the height of the bars by the specified margin.
 ```
 
 Now, if you refresh you should see a properly spaced chart with nice x- and y-axes!
 
-<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/scales.png?raw=true" width = "450px" />
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/scales.png?raw=true" width = "550px" />
 
 Looks great! But what if we shrink our browser? It's time to make this chart responsive.
 
@@ -335,10 +339,12 @@ if (!isMobile) {
         tooltip.style("visibility", "visible");
     })
     .on("mousemove", function() {
-        return tooltip.style("top", (d3.event.pageY - 10)+"px").style("left",(d3.event.pageX + 10)+"px"); // positions the tooltip slightly offset to where the mouse pointer is
+        return tooltip.style("top", (d3.event.pageY - 10)+"px").style("left",(d3.event.pageX + 10)+"px"); 
+        // positions the tooltip slightly offset to where the mouse pointer is
     })
     .on("mouseout", function() {
-        return tooltip.style("visibility", "hidden"); // hides the tooltip when you mouse off of the bars
+        return tooltip.style("visibility", "hidden"); 
+        // hides the tooltip when you mouse off of the bars
     });
 }
 ```
