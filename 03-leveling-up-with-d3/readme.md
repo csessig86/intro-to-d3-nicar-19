@@ -39,15 +39,13 @@ Now, we're going to read the `.csv` file using d3. To do that, we'll call the cs
 Now peek into your console. You should see all your data, helpfully formatted for you by d3 into something easily readable. However, this isn't exactly what we want for our chart. We don't want the full dates, just the year, and we'll want the units to be in megawatts. To do this, paste this above where you called your csv:
 ```javascript
 function transformData(data) {
-                return data.map(
-                    function (row) {
-                        return {
-                            year: row.year.substring(0,4),
-                            megawatts: +row.net_generation,
-                        }
-                    }
-                )
-            }
+    return data.map(function (row) {
+        return {
+            year: row.year.substring(0,4),
+            megawatts: +row.net_generation,
+        }
+    })
+}
 ```
 `data.map` is a d3 function that will re-structure your data into an iterable object with key-value pairs. Now, let's bind the svg to the page and take a look at how it comes together. Below where your `transformData` function ends, paste:
 
@@ -298,6 +296,7 @@ bars.on("mouseover", function(d) {
 });
 ```
 If we refresh, we'll see a small tooltip at the bottom of our chart when we hover over the bars!
+
 <img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/tooltip_first.png?raw=true" width="550px"/>
 
 But this isn't exactly what we want. First, let's add some commas to those numbers. Paste this function *above* your `if (!isMobile)`statement: 
