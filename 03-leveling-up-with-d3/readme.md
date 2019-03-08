@@ -344,4 +344,7 @@ Refresh your page and you should see a beautiful tooltip moving with your mouse!
 
 ## What's next?
 
-Now you can play around with everything we just did -- you can mess around in the CSS, try adding and parsing your own data -- whatever you want! The d3 world is your oyster.
+Now you can play around with everything we just did -- you can mess around in the CSS, try adding and parsing your own data -- whatever you want! 
+
+Some good resources:
+[Interactive Data Visualization for the Web: An Introduction to Designing with D3](https://alignedleft.com/work/d3-book-2e)
