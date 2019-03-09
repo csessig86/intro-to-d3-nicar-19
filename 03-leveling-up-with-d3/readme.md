@@ -39,7 +39,11 @@ Now, we're going to read the `.csv` file using d3. To do that, we'll call the cs
             });
 </script>
 ```
-Now peek into your console. You should see all your data, helpfully formatted for you by d3 into something easily readable. However, this isn't exactly what we want for our chart. We don't want the full dates, just the year, and we'll want the units to be in megawatts. To do this, paste this above where you called your csv:
+Now peek into your console. You should see all your data, helpfully formatted for you by d3 into something easily readable.
+
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/first_console.png?raw=true" width = "550px" />
+
+However, this isn't exactly what we want for our chart. We don't want the full dates, just the year, and we'll want the units to be in megawatts. To do this, paste this above where you called your csv:
 ```javascript
 function transformData(data) {
     return data.map(function (row) {
@@ -52,7 +56,28 @@ function transformData(data) {
 ```
 `data.map` is a d3 function that will re-structure your data into an iterable object with key-value pairs. After we've restructured the data, we then format the data to only include two categories: years, which we've reformated from its original `YYYY-MM-DD` format, and megawatts. 
 
-Now, let's bind the svg to the page and take a look at how it comes together. Below where your `transformData` function ends, paste:
+Below where your `transformData` function ends, paste:
+
+```javascript
+function makeChart(rawData) {
+    var data = transformData(rawData);
+    console.log(data);
+}
+```
+We'll build the rest our basic chart inside this function. To see how these two functions come together, change the last line of your code from 
+```javascript
+d3.csv('iowa-renewable-energy.csv', function(data){ console.log(data) }); 
+```
+to 
+```javascript
+d3.csv('iowa-renewable-energy.csv').then(makeChart);
+```
+
+If you look in the console, you should see the same dataset, but formatted in a different, more straightforward way. 
+
+<img src="https://github.com/csessig86/intro-to-d3-nicar-19/blob/master/03-leveling-up-with-d3/imgs/second_console.png?raw=true" width ="550px"/>
+
+Now, let's bind the svg to the page and take a look at how it comes together. Replace your `makeChart` function with:
 
 ```javascript
 function makeChart(rawData) {
@@ -64,13 +89,11 @@ function makeChart(rawData) {
             .attr('width', chartWidth)
             .attr('height', chartHeight)
     var data = transformData(rawData);
-    console.log(data);
 }
 ```
-We'll build the rest our basic chart inside this function. Right now, we've appended a blank SVG to the body of our page, with a height and width that we've specified. Lastly, we're running our `transformData` function to format our data for our chart in the way we want.
+Right now, we've appended a blank SVG to the body of our page, with a height and width that we've specified. Lastly, we're running our `transformData` function to format our data for our chart in the way we want.
 
-To see how these two functions come together, change the last line of your code from 
-`d3.csv('iowa-renewable-energy.csv', function(data){ console.log(data) });` to `d3.csv('iowa-renewable-energy.csv').then(makeChart);`. If you look in the console, you should see the same dataset, but formatted in a different, more straightforward way.
+
 
 Let's start making the chart! First, our x- and y-axes. Under `var data = transformData(rawData);` paste: 
 ```javascript
