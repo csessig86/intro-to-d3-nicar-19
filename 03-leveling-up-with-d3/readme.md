@@ -112,13 +112,14 @@ This will set the units for each axes. The x-axis uses the *years* in the csv, a
 ```javascript
 var xScale = d3.scaleBand()
     .domain(data.map(function(d) { 
-        return d.year 
         console.log(d.year);
+        return d.year 
     }))
     .range([0, chartWidth])
     .padding(0.1);
 ``` 
 You'll see a list of every year in the dataset. Now let's draw the bars. After your `yScale` variable, paste:
+
 ```javascript
 var bars = canvas.append('g')
     .attr('id', 'bars')
