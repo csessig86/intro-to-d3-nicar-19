@@ -34,9 +34,9 @@ Copy and paste this basic HTML template into the page:
 Now, we're going to read the `.csv` file using d3. To do that, we'll call the csv file in our javascript like so:
 ```javascript
 <script type="text/javascript">
-            d3.csv('iowa-renewable-energy.csv', function(data){
-                console.log(data)
-            });
+    d3.csv('iowa-electricity.csv', function(data){
+        console.log(data)
+    });
 </script>
 ```
 Now peek into your console. You should see all your data, helpfully formatted for you by d3 into something easily readable.
@@ -66,11 +66,11 @@ function makeChart(rawData) {
 ```
 We'll build the rest our basic chart inside this function. To see how these two functions come together, change the last line of your code from 
 ```javascript
-d3.csv('iowa-renewable-energy.csv', function(data){ console.log(data) }); 
+d3.csv('iowa-electricity.csv', function(data){ console.log(data) }); 
 ```
 to 
 ```javascript
-d3.csv('iowa-renewable-energy.csv').then(makeChart);
+d3.csv('iowa-electricity.csv').then(makeChart);
 ```
 
 If you look in the console, you should see the same dataset, but formatted in a different, more straightforward way. 
@@ -91,11 +91,11 @@ function makeChart(rawData) {
     var data = transformData(rawData);
 }
 ```
+
 Right now, we've appended a blank SVG to the body of our page, with a height and width that we've specified. Lastly, we're running our `transformData` function to format our data for our chart in the way we want.
 
-
-
 Let's start making the chart! First, our x- and y-axes. Under `var data = transformData(rawData);` paste: 
+
 ```javascript
 var xScale = d3.scaleBand()
     .domain(data.map(function(d) { 
@@ -149,7 +149,7 @@ We'll be working off of the code in `06-iowa-energy-axes.html` if you need a ref
 First, we'll need to make space for the axes -- right now, our chart is taking up all of the room on our canvas, so let's add some breathing space. 
 
 In your `makeChart` function, add the following line after the `chartHeight` variable:
-```script
+```javascript
 var chartMargin = {top: 10, right: 10, bottom: 10, left: 20};
 ```
 Now we'll need to change things up a bit. In our previous chart, we just made one `g` group and appended it to the HTML body. We'll need to create a couple to add our axes, so let's first make one container SVG to hold everything in. After your `chartMargin` variable, paste:
@@ -277,7 +277,7 @@ Then, at the very bottom of your script, change your `d3.csv` script to:
 
 ```javascript
 var data;
-d3.csv('iowa-renewable-energy.csv').then(
+d3.csv('iowa-electricity.csv').then(
     function(d) {
         data = transformData(d);
         makeChart();

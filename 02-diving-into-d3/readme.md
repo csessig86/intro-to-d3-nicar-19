@@ -24,13 +24,13 @@ Copy and paste this basic HTML template into the page:
 <html>
     <head>
         <style type="text/css">
-            <!-- CSS styles go here -->
+            /* CSS styles go here */
         </style>
     </head>
     <body>
         <!-- HTML elements go here -->
         <script type="text/javascript">
-            <!-- javascript goes here -->
+            // javascript goes here
         </script>
     </body>
 </html>
